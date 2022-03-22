@@ -114,6 +114,8 @@
 				        
 							<li><a href="/archives">所有文章</a></li>
 				        
+							<li><a href="/tags/%E9%9A%8F%E7%AC%94">随笔</a></li>
+				        
 							<li><a href="/tags/acm">acm</a></li>
 				        
 							<li><a href="/tags/course">course</a></li>
@@ -182,6 +184,8 @@
 					<li><a href="/">主页</a></li>
 		        
 					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/tags/%E9%9A%8F%E7%AC%94">随笔</a></li>
 		        
 					<li><a href="/tags/acm">acm</a></li>
 		        
@@ -295,9 +299,9 @@
 <p>此时，因为从子集<strong>K</strong>中流出的流量仅从<strong>V</strong> 流入 ， 此时从<strong>V</strong>流出的最大流最多只有 $value(K)$</p>
 <p>做差后就抵消掉了。</p>
 <p>（好吧，只能意会一下，具体见证明：<a target="_blank" rel="noopener" href="https://blog.csdn.net/can919/article/details/77603353%EF%BC%89">https://blog.csdn.net/can919/article/details/77603353）</a></p>
-<p><strong>至于输出路径</strong></p>
+<p><strong>关于输出路径</strong></p>
 <p>对于每一个$c_i$,把它删掉以后再跑一遍最小割，看看和原来的结果是否相差$c_i$，如果是则证明该边必选，然后再根据选的仪器就可以反推回应该选哪些实验。</p>
-<p><strong>至于恶心的读入</strong></p>
+<p><strong>关于恶心的读入</strong></p>
 <p>写这题的时候刚从题解区大佬那里学到了一个神技。（本题最大收获23333333）</p>
 <p><strong>一行中输入的整数个数不确定怎么办</strong>（读到换行符结束本行）？</p>
 <p>通常的处理方法是 getline(cin,string) 获得一整行，然后手动从string里把每个整数拆出来，或者用stringstream—其实也很麻烦。</p>
