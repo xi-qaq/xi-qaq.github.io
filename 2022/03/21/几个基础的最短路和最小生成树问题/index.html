@@ -9,18 +9,18 @@
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="[toc] 前言复习一下最短路和最小生成树，都是一些最基础的应用，稍微整理一下。 最短路最短路计数其实就是询问最短路有多少条。 因为最短路算法（ Dijkstra , sfpa 等等 ) 本身都算是 BFS+贪心的过程，那么我们只需要在松弛一个节点的时候更新它邻接节点的最短路径数目就可以。 目前在节点 u ， 它有一个邻接节点 v ，从 s –&gt; u 的最短路有 ans[u] 条。">
+  <meta name="description" content="最短路 最短路计数 例题 代码   多源最短路问题 例题 代码 待更      前言复习一下最短路和最小生成树，都是一些最基础的应用，稍微整理一下。 最短路最短路计数其实就是询问最短路有多少条。 因为最短路算法（ Dijkstra , sfpa 等等 ) 本身都算是 BFS+贪心的过程，那么我们只需要在松弛一个节点的时候更新它邻接节点的最短路径数目就可以。 目前在节点 u ， 它有一个邻">
 <meta property="og:type" content="article">
 <meta property="og:title" content="几个基础的最短路和最小生成树问题">
 <meta property="og:url" content="http://example.com/2022/03/21/%E5%87%A0%E4%B8%AA%E5%9F%BA%E7%A1%80%E7%9A%84%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%92%8C%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="[toc] 前言复习一下最短路和最小生成树，都是一些最基础的应用，稍微整理一下。 最短路最短路计数其实就是询问最短路有多少条。 因为最短路算法（ Dijkstra , sfpa 等等 ) 本身都算是 BFS+贪心的过程，那么我们只需要在松弛一个节点的时候更新它邻接节点的最短路径数目就可以。 目前在节点 u ， 它有一个邻接节点 v ，从 s –&gt; u 的最短路有 ans[u] 条。">
+<meta property="og:description" content="最短路 最短路计数 例题 代码   多源最短路问题 例题 代码 待更      前言复习一下最短路和最小生成树，都是一些最基础的应用，稍微整理一下。 最短路最短路计数其实就是询问最短路有多少条。 因为最短路算法（ Dijkstra , sfpa 等等 ) 本身都算是 BFS+贪心的过程，那么我们只需要在松弛一个节点的时候更新它邻接节点的最短路径数目就可以。 目前在节点 u ， 它有一个邻">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/40f0b7090559409c82dcf30a14b8f418.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/deaf3d65553843818a7ce1773d28fc9e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/0429c09e1a4b426ca40d5946cf986ccb.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16">
 <meta property="article:published_time" content="2022-03-21T15:09:41.000Z">
-<meta property="article:modified_time" content="2022-03-21T16:03:46.880Z">
+<meta property="article:modified_time" content="2022-03-22T06:07:51.333Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="acm">
 <meta name="twitter:card" content="summary">
@@ -235,7 +235,22 @@
 
 
 
-<p>[toc]</p>
+<ul>
+<li><a href="#%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a><ul>
+<li><a href="#%E6%9C%80%E7%9F%AD%E8%B7%AF%E8%AE%A1%E6%95%B0">最短路计数</a><ul>
+<li><a href="#%E4%BE%8B%E9%A2%98">例题</a></li>
+<li><a href="#%E4%BB%A3%E7%A0%81">代码</a></li>
+</ul>
+</li>
+<li><a href="#%E5%A4%9A%E6%BA%90%E6%9C%80%E7%9F%AD%E8%B7%AF%E9%97%AE%E9%A2%98">多源最短路问题</a><ul>
+<li><a href="#%E4%BE%8B%E9%A2%98-1">例题</a></li>
+<li><a href="#%E4%BB%A3%E7%A0%81-1">代码</a></li>
+<li><a href="#%E5%BE%85%E6%9B%B4">待更</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>复习一下最短路和最小生成树，都是一些最基础的应用，稍微整理一下。</p>
 <h2 id="最短路"><a href="#最短路" class="headerlink" title="最短路"></a>最短路</h2><h3 id="最短路计数"><a href="#最短路计数" class="headerlink" title="最短路计数"></a>最短路计数</h3><p>其实就是询问最短路有多少条。</p>
 <p>因为最短路算法（ Dijkstra , sfpa 等等 ) 本身都算是 BFS+贪心的过程，那么我们只需要在松弛一个节点的时候更新它邻接节点的最短路径数目就可以。</p>
@@ -288,7 +303,7 @@
     </a>
   
   
-    <a href="/2022/03/19/%E6%9C%80%E8%BF%91%E9%81%87%E5%88%B0%E7%9A%84%E5%90%84%E7%A7%8DDP%201.0/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2022/03/19/%E6%9C%80%E8%BF%91%E9%81%87%E5%88%B0%E7%9A%84%E5%90%84%E7%A7%8DDP-1.0/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">最近遇到的各种DP 1.0</div>
       <strong class="article-nav-caption">&gt;</strong>
     </a>
