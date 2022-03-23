@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>整理下网络流 | Hexo</title>
+  <title>整理下网络流1.0 | Hexo</title>
 
   <!-- keywords -->
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="P3254 圆桌问题 链接 题意 解析 参考代码   P2762 太空飞行计划问题（最小割） 题目链接 题目大意 思路 代码   P2774 方格取数问题 题目 解题思路 代 码    前言再开个坑，这几天打算看看网络流，应该会以洛谷的24题为主，毕竟之前没怎么写过网络流。 P3254 圆桌问题链接https:&#x2F;&#x2F;www.luogu.com.cn&#x2F;problem&#x2F;P3254 这道基本算裸题了">
+  <meta name="description" content="P3254 圆桌问题（最大流） 链接 题意 解析 参考代码   P2762 太空飞行计划问题（最小割） 题目链接 题目大意 思路 代码   P2774 方格取数问题（最小割） 题目 解题思路 代 码   P1251 餐巾计划问题（费用流） 题意 思路 代码   后续待更  前言再开个坑，这几天打算看看网络流，应该会以洛谷的24题为主，毕竟之前没怎么写过网络流。 P3254 圆桌问题（最大流）">
 <meta property="og:type" content="article">
-<meta property="og:title" content="整理下网络流">
-<meta property="og:url" content="http://example.com/2022/03/22/%E6%95%B4%E7%90%86%E4%B8%8B%E7%BD%91%E7%BB%9C%E6%B5%81/index.html">
+<meta property="og:title" content="整理下网络流1.0">
+<meta property="og:url" content="http://example.com/2022/03/22/%E6%95%B4%E7%90%86%E4%B8%8B%E7%BD%91%E7%BB%9C%E6%B5%811.0/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="P3254 圆桌问题 链接 题意 解析 参考代码   P2762 太空飞行计划问题（最小割） 题目链接 题目大意 思路 代码   P2774 方格取数问题 题目 解题思路 代 码    前言再开个坑，这几天打算看看网络流，应该会以洛谷的24题为主，毕竟之前没怎么写过网络流。 P3254 圆桌问题链接https:&#x2F;&#x2F;www.luogu.com.cn&#x2F;problem&#x2F;P3254 这道基本算裸题了">
+<meta property="og:description" content="P3254 圆桌问题（最大流） 链接 题意 解析 参考代码   P2762 太空飞行计划问题（最小割） 题目链接 题目大意 思路 代码   P2774 方格取数问题（最小割） 题目 解题思路 代 码   P1251 餐巾计划问题（费用流） 题意 思路 代码   后续待更  前言再开个坑，这几天打算看看网络流，应该会以洛谷的24题为主，毕竟之前没怎么写过网络流。 P3254 圆桌问题（最大流）">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/611d718b9dfe4488abff84754581d01f.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/3a2fef8a87924a06b77386a3f68bf8d6.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16">
@@ -22,8 +22,10 @@
 <meta property="og:image" content="https://img-blog.csdnimg.cn/cfa3244251504f2aa2c3a1bf841b8a37.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/230d7d85be2647709964a884647f9a83.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/d4edb7199d3b41278ba9d4bba0aaede7.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/85db028f66d144ffa46e582e7d816b70.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/e3dc6df9ad4643959097a1d14bf31ac9.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16">
 <meta property="article:published_time" content="2022-03-22T09:47:14.000Z">
-<meta property="article:modified_time" content="2022-03-22T13:39:47.756Z">
+<meta property="article:modified_time" content="2022-03-23T08:20:53.028Z">
 <meta property="article:tag" content="acm">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img-blog.csdnimg.cn/611d718b9dfe4488abff84754581d01f.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16">
@@ -232,10 +234,10 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-整理下网络流" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-整理下网络流1.0" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2022/03/22/%E6%95%B4%E7%90%86%E4%B8%8B%E7%BD%91%E7%BB%9C%E6%B5%81/" class="article-date">
+      <a href="/2022/03/22/%E6%95%B4%E7%90%86%E4%B8%8B%E7%BD%91%E7%BB%9C%E6%B5%811.0/" class="article-date">
   	<time datetime="2022-03-22T09:47:14.000Z" itemprop="datePublished">2022-03-22</time>
 </a>
     </div>
@@ -249,7 +251,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      整理下网络流
+      整理下网络流1.0
       
     </h1>
   
@@ -267,8 +269,8 @@
         
           
 <div class="counter-tag counter">
-    <span id="/2022/03/22/%E6%95%B4%E7%90%86%E4%B8%8B%E7%BD%91%E7%BB%9C%E6%B5%81/" class="leancloud_visitors post-title-link"
-          style="font-size: 12px" data-flag-title="整理下网络流">
+    <span id="/2022/03/22/%E6%95%B4%E7%90%86%E4%B8%8B%E7%BD%91%E7%BB%9C%E6%B5%811.0/" class="leancloud_visitors post-title-link"
+          style="font-size: 12px" data-flag-title="整理下网络流1.0">
          &nbsp;
         view
     </span>
@@ -284,7 +286,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML" async></script>
 
 <ul>
-<li><a href="#p3254-%E5%9C%86%E6%A1%8C%E9%97%AE%E9%A2%98">P3254 圆桌问题</a><ul>
+<li><a href="#p3254-%E5%9C%86%E6%A1%8C%E9%97%AE%E9%A2%98%E6%9C%80%E5%A4%A7%E6%B5%81">P3254 圆桌问题（最大流）</a><ul>
 <li><a href="#%E9%93%BE%E6%8E%A5">链接</a></li>
 <li><a href="#%E9%A2%98%E6%84%8F">题意</a></li>
 <li><a href="#%E8%A7%A3%E6%9E%90">解析</a></li>
@@ -298,15 +300,22 @@
 <li><a href="#%E4%BB%A3%E7%A0%81">代码</a></li>
 </ul>
 </li>
-<li><a href="#p2774-%E6%96%B9%E6%A0%BC%E5%8F%96%E6%95%B0%E9%97%AE%E9%A2%98">P2774 方格取数问题</a><ul>
+<li><a href="#p2774-%E6%96%B9%E6%A0%BC%E5%8F%96%E6%95%B0%E9%97%AE%E9%A2%98%E6%9C%80%E5%B0%8F%E5%89%B2">P2774 方格取数问题（最小割）</a><ul>
 <li><a href="#%E9%A2%98%E7%9B%AE">题目</a></li>
 <li><a href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF">解题思路</a></li>
 <li><a href="#%E4%BB%A3-%E7%A0%81">代 码</a></li>
 </ul>
 </li>
+<li><a href="#p1251-%E9%A4%90%E5%B7%BE%E8%AE%A1%E5%88%92%E9%97%AE%E9%A2%98%E8%B4%B9%E7%94%A8%E6%B5%81">P1251 餐巾计划问题（费用流）</a><ul>
+<li><a href="#%E9%A2%98%E6%84%8F-1">题意</a></li>
+<li><a href="#%E6%80%9D%E8%B7%AF-1">思路</a></li>
+<li><a href="#%E4%BB%A3%E7%A0%81-1">代码</a></li>
+</ul>
+</li>
+<li><a href="#%E5%90%8E%E7%BB%AD%E5%BE%85%E6%9B%B4">后续待更</a></li>
 </ul>
 <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>再开个坑，这几天打算看看网络流，应该会以洛谷的24题为主，毕竟之前没怎么写过网络流。</p>
-<h2 id="P3254-圆桌问题"><a href="#P3254-圆桌问题" class="headerlink" title="P3254 圆桌问题"></a>P3254 圆桌问题</h2><h4 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h4><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3254">https://www.luogu.com.cn/problem/P3254</a></p>
+<h2 id="P3254-圆桌问题（最大流）"><a href="#P3254-圆桌问题（最大流）" class="headerlink" title="P3254 圆桌问题（最大流）"></a>P3254 圆桌问题（最大流）</h2><h4 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h4><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3254">https://www.luogu.com.cn/problem/P3254</a></p>
 <p>这道基本算裸题了。</p>
 <h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><p><img src="https://img-blog.csdnimg.cn/611d718b9dfe4488abff84754581d01f.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220322175103988"></p>
 <p><strong>输入 #1</strong></p>
@@ -368,7 +377,7 @@
 
 
 
-<h2 id="P2774-方格取数问题"><a href="#P2774-方格取数问题" class="headerlink" title="P2774 方格取数问题"></a>P2774 方格取数问题</h2><p>很经典的最小割 ， 去年某不知名比赛遇到一个改版的，当时当作费用流乱搞没写出来2333</p>
+<h2 id="P2774-方格取数问题（最小割）"><a href="#P2774-方格取数问题（最小割）" class="headerlink" title="P2774 方格取数问题（最小割）"></a>P2774 方格取数问题（最小割）</h2><p>很经典的最小割 ， 去年某不知名比赛遇到一个改版的，当时当作费用流乱搞没写出来2333</p>
 <h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><p><img src="https://img-blog.csdnimg.cn/230d7d85be2647709964a884647f9a83.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220322211312814"></p>
 <p><strong>输入 #1</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">3 3</span><br><span class="line">1 2 3</span><br><span class="line">3 2 3</span><br><span class="line">2 3 1 </span><br></pre></td></tr></table></figure>
@@ -390,6 +399,49 @@
 <h4 id="代-码"><a href="#代-码" class="headerlink" title="代 码"></a>代 码</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int N = 5050;</span><br><span class="line">int maze[N][N];</span><br><span class="line">int gap[N],dis[N],pre[N],cur[N];</span><br><span class="line">const int inf = 0x3f3f3f3f;</span><br><span class="line">int flow[N][N];</span><br><span class="line">int mp[111][111];</span><br><span class="line">int sap(int start,int end,int nodenum)&#123;</span><br><span class="line">    memset(cur,0,sizeof cur);</span><br><span class="line">    memset(dis,0,sizeof dis);</span><br><span class="line">    memset(gap,0,sizeof gap);</span><br><span class="line">    memset(flow,0,sizeof flow);</span><br><span class="line">    int u = pre[start] = start,maxflow = 0,aug = -1;</span><br><span class="line">    gap[0] = nodenum;</span><br><span class="line">    while(dis[start]&lt;nodenum)&#123;</span><br><span class="line">        loop:</span><br><span class="line">        for(int v=cur[u];v&lt;nodenum;v++) &#123;</span><br><span class="line">            if (maze[u][v] - flow[u][v] &amp;&amp; dis[u] == dis[v] + 1) &#123;</span><br><span class="line">                if (aug == -1 || aug &gt; maze[u][v] - flow[u][v])</span><br><span class="line">                    aug = maze[u][v] - flow[u][v];</span><br><span class="line">                pre[v] = u;</span><br><span class="line">                u = cur[u] = v;</span><br><span class="line">                if (v == end) &#123;</span><br><span class="line">                    maxflow += aug;</span><br><span class="line">                    for (u = pre[u]; v != start; v = u, u = pre[u]) &#123;</span><br><span class="line">                        flow[u][v] += aug;</span><br><span class="line">                        flow[v][u] -= aug;</span><br><span class="line">                    &#125;</span><br><span class="line">                    aug = -1;</span><br><span class="line">                &#125;</span><br><span class="line">                goto loop;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        int mindis = nodenum - 1;</span><br><span class="line">        for(int v=0;v&lt;nodenum;v++)&#123;</span><br><span class="line">            if(maze[u][v]-flow[u][v]&amp;&amp;mindis&gt;dis[v])&#123;</span><br><span class="line">                cur[u] = v;</span><br><span class="line">                mindis = dis[v];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if((--gap[dis[u]])==0) break;</span><br><span class="line">        gap[dis[u]=mindis+1]++;</span><br><span class="line">        u = pre[u];</span><br><span class="line">    &#125;</span><br><span class="line">    return maxflow;</span><br><span class="line">&#125;</span><br><span class="line">vector&lt;pair&lt;int,int&gt;&gt; a,b;</span><br><span class="line">int n, m;</span><br><span class="line">int cal(pair&lt;int,int&gt; pa)&#123;</span><br><span class="line">    return (pa.first-1)*m+pa.second;    // 把二位坐标映射成一维的</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">    ios::sync_with_stdio(false);</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    int sum = 0;</span><br><span class="line">    for (int i = 1; i &lt;= n; i++)&#123;</span><br><span class="line">        for (int j = 1; j &lt;= m; j++) &#123;</span><br><span class="line">            cin &gt;&gt; mp[i][j];</span><br><span class="line">            sum += mp[i][j];</span><br><span class="line">            if ((i + j) &amp; 1) a.push_back(make_pair(i, j));</span><br><span class="line">            else b.push_back(make_pair(i, j));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    int s = 0,t = n*m+1;</span><br><span class="line">    for(int i=0;i&lt;a.size();i++)&#123;</span><br><span class="line">        int u = s,v = cal(a[i]);</span><br><span class="line">        maze[u][v] = mp[a[i].first][a[i].second];</span><br><span class="line">        maze[v][u] = 0;</span><br><span class="line">        for(int j=0;j&lt;b.size();j++)&#123;</span><br><span class="line">            if(abs(a[i].first-b[j].first)+abs(a[i].second-b[j].second)==1)&#123;  //判断是否相邻</span><br><span class="line">                u = cal(a[i]),v = cal(b[j]);</span><br><span class="line">                maze[u][v] = inf;</span><br><span class="line">                maze[v][u] = 0;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i=0;i&lt;b.size();i++)&#123;</span><br><span class="line">        int u = cal(b[i]),v = t;</span><br><span class="line">        maze[u][v] = mp[b[i].first][b[i].second];</span><br><span class="line">        maze[v][u] = 0;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;sum - sap(s,t,t+1)&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
+
+
+
+
+
+<h2 id="P1251-餐巾计划问题（费用流）"><a href="#P1251-餐巾计划问题（费用流）" class="headerlink" title="P1251 餐巾计划问题（费用流）"></a>P1251 餐巾计划问题（费用流）</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1251">https://www.luogu.com.cn/problem/P1251</a></p>
+<h4 id="题意-1"><a href="#题意-1" class="headerlink" title="题意"></a>题意</h4><p><img src="https://img-blog.csdnimg.cn/85db028f66d144ffa46e582e7d816b70.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220323154757329"></p>
+<p><strong>输入 #1</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">1 7 5 </span><br><span class="line">11 2 2 3 1</span><br></pre></td></tr></table></figure>
+
+<p><strong>输出 #1</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">134</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><p>很巧妙的费用流建模。</p>
+<p>首先每一天肯定要拆分成早上（开始），晚上（结束）两个时刻。</p>
+<p>早上收集干净毛巾，晚上处理旧毛巾</p>
+<p>想的时候一直在思考一个问题，<strong>怎么同时把洗过的毛巾送到汇点和送到第二天</strong></p>
+<p>一开始想每天早上连晚上 ， 然后最后一天早上连汇点 ， 容量为 $\sum_{i&#x3D;1}^n r_i$</p>
+<p>后来发现行不通，还是会和旧毛巾冲突到。</p>
+<p>经题解区提醒，发现可以直接让源点连旧毛巾到每天晚上：</p>
+<p>相当于每天早上“用完新毛巾后直接上交汇点统计，当了晚上源点送出相同数量的旧毛巾”</p>
+<p>这与每天“用完$r_i$条新毛巾后变为旧毛巾”是等价的 ， 而且避免了上述建模冲突。</p>
+<p><strong>具体建模方法</strong></p>
+<ol>
+<li><p>源点连每天早上，容量为$r_i$ ， 费用为$p$   （直接买毛巾 ）</p>
+</li>
+<li><p>源点连每天晚上，容量为$r_i$ ， 费用为$0$    （早上用掉的旧毛巾，如上述）</p>
+</li>
+<li><p>每天早上连汇点，容量为$r_i$ ， 费用为$0$    （交到汇点统计答案）</p>
+</li>
+<li><p>每天晚上连 该天+快洗天数的的早上，容量为$inf$ ， 费用为$f$    （将部分旧毛巾快洗）</p>
+</li>
+<li><p>每天晚上连 该天+慢洗天数的的早上，容量为$inf$ ， 费用为$p$    （将部分旧毛巾慢洗）</p>
+</li>
+<li><p>每天晚上连 第二天晚上，容量为$inf$ ， 费用为$0$    （将剩下的旧毛巾留到第二天）</p>
+<p>关于快慢洗这里，我们只需要连接对应的那一天就可以，不需要连接后续的每一天。因为洗好的毛巾在那之后哪一天用都一样。</p>
+<p>大致如下图 ， 中间快慢洗部分没有全部画出。</p>
+<p><img src="https://img-blog.csdnimg.cn/e3dc6df9ad4643959097a1d14bf31ac9.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220323160706737"></p>
+</li>
+</ol>
+<h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define int long long</span><br><span class="line">const int maxn= 2e5+100;</span><br><span class="line">struct E&#123;</span><br><span class="line">    int to;</span><br><span class="line">    int nxt;</span><br><span class="line">    int flow;</span><br><span class="line">    int cost;</span><br><span class="line">    int cap;</span><br><span class="line">&#125;e[maxn&lt;&lt;1];</span><br><span class="line">const int inf = 1e12+7;</span><br><span class="line">int head[maxn],tot;</span><br><span class="line">int pre[maxn],dis[maxn];</span><br><span class="line">bool vis[maxn];</span><br><span class="line">int N;</span><br><span class="line">void init(int n)&#123;</span><br><span class="line">    N = n;</span><br><span class="line">    tot = 0;</span><br><span class="line">    memset(head,-1,sizeof head);</span><br><span class="line">&#125;</span><br><span class="line">void add_edge(int u,int v,int cap,int cost)&#123;</span><br><span class="line">    e[tot].to = v;e[tot].cap = cap;</span><br><span class="line">    e[tot].cost = cost;e[tot].flow = 0;</span><br><span class="line">    e[tot].nxt = head[u];head[u] = tot++;</span><br><span class="line">    e[tot].to = u;e[tot].cap = 0;</span><br><span class="line">    e[tot].cost = -cost;e[tot].flow = 0;</span><br><span class="line">    e[tot].nxt = head[v];head[v] = tot++;</span><br><span class="line">&#125;</span><br><span class="line">bool spfa(int s,int t)&#123;</span><br><span class="line">    queue&lt;int&gt; q;</span><br><span class="line">    for(int i=0;i&lt;N;i++)&#123;</span><br><span class="line">        dis[i] = inf;</span><br><span class="line">        vis[i] = false;</span><br><span class="line">        pre[i] = -1;</span><br><span class="line">    &#125;</span><br><span class="line">    dis[s] = 0;</span><br><span class="line">    vis[s] = true;</span><br><span class="line">    q.push(s);</span><br><span class="line">    while(!q.empty())&#123;</span><br><span class="line">        int u = q.front();</span><br><span class="line">        q.pop();</span><br><span class="line">        vis[u] = false;</span><br><span class="line">        for(int i=head[u];i!=-1;i=e[i].nxt)&#123;</span><br><span class="line">            int v = e[i].to;</span><br><span class="line">            if(e[i].cap&gt;e[i].flow&amp;&amp;dis[v]&gt;dis[u]+e[i].cost)&#123;</span><br><span class="line">                dis[v] = dis[u]+e[i].cost;</span><br><span class="line">                pre[v] = i;</span><br><span class="line">                if(!vis[v])&#123;</span><br><span class="line">                    vis[v] = true;</span><br><span class="line">                    q.push(v);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if(pre[t]==-1) return false;</span><br><span class="line">    else return true;</span><br><span class="line">&#125;</span><br><span class="line">int cost_flow(int s,int t,int &amp;cost)&#123;</span><br><span class="line">    int flow = 0;</span><br><span class="line">    cost = 0;</span><br><span class="line">    while(spfa(s,t))&#123;</span><br><span class="line">        int min = inf;</span><br><span class="line">        for(int i=pre[t];i!=-1;i=pre[e[i^1].to])&#123;</span><br><span class="line">            if(min&gt;e[i].cap-e[i].flow)</span><br><span class="line">                min = e[i].cap - e[i].flow;</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i=pre[t];i!=-1;i=pre[e[i^1].to])&#123;</span><br><span class="line">            e[i].flow += min;</span><br><span class="line">            e[i^1].flow -= min;</span><br><span class="line">            cost += e[i].cost*min;</span><br><span class="line">        &#125;</span><br><span class="line">        flow += min;</span><br><span class="line">    &#125;</span><br><span class="line">    return flow;</span><br><span class="line">&#125;</span><br><span class="line">int a[maxn];</span><br><span class="line">signed main()&#123;</span><br><span class="line">    int day;</span><br><span class="line">    cin&gt;&gt;day;</span><br><span class="line">    for(int i=1;i&lt;=day;i++)&#123;</span><br><span class="line">        cin&gt;&gt;a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    int p,m,f,n,s;</span><br><span class="line">    cin&gt;&gt;p&gt;&gt;m&gt;&gt;f&gt;&gt;n&gt;&gt;s;</span><br><span class="line">    int S = 0,T = 2*day+1;</span><br><span class="line">    N = T+1;</span><br><span class="line">    init(N);</span><br><span class="line">    for(int i=1;i&lt;=day;i++)&#123;</span><br><span class="line">        int start = i,end = i+day;</span><br><span class="line">        add_edge(S,start,a[i],p);   // 源点连每天早上，容量为ri ， 费用为p   （直接买毛巾 ）</span><br><span class="line">        add_edge(S,end,a[i],0);     //  源点连每天晚上，容量为ri ， 费用为0    （早上用掉的旧毛巾）</span><br><span class="line">        add_edge(start,T,a[i],0);   //  每天早上连汇点，容量为ri ， 费用为0    （交到汇点统计答案）</span><br><span class="line">        if(start+m&lt;=day)</span><br><span class="line">            add_edge(end,start+m,inf,f);    //  （将部分旧毛巾快洗）   </span><br><span class="line">        if(start+n&lt;=day)</span><br><span class="line">            add_edge(end,start+n,inf,s);   //  （将部分旧毛巾慢洗） </span><br><span class="line">        if(i!=day)</span><br><span class="line">            add_edge(end,end+1,inf,0);   // （将剩下的旧毛巾留到第二天）</span><br><span class="line">    &#125;</span><br><span class="line">    int cost = 0;</span><br><span class="line">    N = T+1;</span><br><span class="line">    cost_flow(S,T,cost);</span><br><span class="line">    cout&lt;&lt;cost&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
@@ -415,7 +467,7 @@
 </article>
 
 
-<div class="ds-share share" data-thread-key="整理下网络流" data-title="整理下网络流" data-url="http://example.com/2022/03/22/%E6%95%B4%E7%90%86%E4%B8%8B%E7%BD%91%E7%BB%9C%E6%B5%81/"  data-images="http://image11.m1905.cn/uploadfile/2019/ss/0409/20190409054502756.jpeg" data-content="整理下网络流">
+<div class="ds-share share" data-thread-key="整理下网络流1.0" data-title="整理下网络流1.0" data-url="http://example.com/2022/03/22/%E6%95%B4%E7%90%86%E4%B8%8B%E7%BD%91%E7%BB%9C%E6%B5%811.0/"  data-images="http://image11.m1905.cn/uploadfile/2019/ss/0409/20190409054502756.jpeg" data-content="整理下网络流1.0">
     <div class="ds-share-inline">
       <ul  class="ds-share-icons-16">
       	<li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
