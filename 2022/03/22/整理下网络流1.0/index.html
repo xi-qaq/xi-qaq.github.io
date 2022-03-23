@@ -1,20 +1,23 @@
 <!DOCTYPE html>
-<html>
+
+<html lang="zh-CN">
+
 <head>
-  <meta charset="utf-8">
-  
-  <title>整理下网络流1.0 | Hexo</title>
+    
+    <title>整理下网络流1.0 - Hexo</title>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    
+    
 
-  <!-- keywords -->
-  
-
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="P3254 圆桌问题（最大流） 链接 题意 解析 参考代码   P2762 太空飞行计划问题（最小割） 题目链接 题目大意 思路 代码   P2774 方格取数问题（最小割） 题目 解题思路 代 码   P1251 餐巾计划问题（费用流） 题意 思路 代码   后续待更  前言再开个坑，这几天打算看看网络流，应该会以洛谷的24题为主，毕竟之前没怎么写过网络流。 P3254 圆桌问题（最大流）">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <meta name="description" content="P3254 圆桌问题（最大流） 链接 题意 解析 参考代码   P2762 太空飞行计划问题（最小割） 题目链接 题目大意 思路 代码   P2774 方格取数问题（最小割） 题目 解题思路 代 码   P1251 餐巾计划问题（费用流） 题意 思路 代码   后续待更  [toc] 前言再开个坑，这几天打算看看网络流，应该会以洛谷的24题为主，毕竟之前没怎么写过网络流。 P3254 圆桌问">
 <meta property="og:type" content="article">
 <meta property="og:title" content="整理下网络流1.0">
 <meta property="og:url" content="http://example.com/2022/03/22/%E6%95%B4%E7%90%86%E4%B8%8B%E7%BD%91%E7%BB%9C%E6%B5%811.0/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="P3254 圆桌问题（最大流） 链接 题意 解析 参考代码   P2762 太空飞行计划问题（最小割） 题目链接 题目大意 思路 代码   P2774 方格取数问题（最小割） 题目 解题思路 代 码   P1251 餐巾计划问题（费用流） 题意 思路 代码   后续待更  前言再开个坑，这几天打算看看网络流，应该会以洛谷的24题为主，毕竟之前没怎么写过网络流。 P3254 圆桌问题（最大流）">
+<meta property="og:description" content="P3254 圆桌问题（最大流） 链接 题意 解析 参考代码   P2762 太空飞行计划问题（最小割） 题目链接 题目大意 思路 代码   P2774 方格取数问题（最小割） 题目 解题思路 代 码   P1251 餐巾计划问题（费用流） 题意 思路 代码   后续待更  [toc] 前言再开个坑，这几天打算看看网络流，应该会以洛谷的24题为主，毕竟之前没怎么写过网络流。 P3254 圆桌问">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/611d718b9dfe4488abff84754581d01f.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/3a2fef8a87924a06b77386a3f68bf8d6.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16">
@@ -25,265 +28,146 @@
 <meta property="og:image" content="https://img-blog.csdnimg.cn/85db028f66d144ffa46e582e7d816b70.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/e3dc6df9ad4643959097a1d14bf31ac9.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16">
 <meta property="article:published_time" content="2022-03-22T09:47:14.000Z">
-<meta property="article:modified_time" content="2022-03-23T08:20:53.028Z">
+<meta property="article:modified_time" content="2022-03-23T09:23:26.584Z">
 <meta property="article:tag" content="acm">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img-blog.csdnimg.cn/611d718b9dfe4488abff84754581d01f.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16">
-  
-    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg">
-  
-  
-<link rel="stylesheet" href="/css/style.css">
-
-  
-<script>
-    (function(){
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
-        }
-        else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-        }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-    })();
-</script>
-
-  
-
-  
-<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
-
-  
-<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
-
-
-  
-      <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
-<script>AV.initialize("OT60l9iub3rLVNaRWPp4nxB5-gzGzoHsz", "mrmI9GJwHo0Xra03n3itsUKA");</script>
-
-<script src="/js/Counter.js"></script>
-
-  
+    <link rel="stylesheet" href="/lib/jquery.fancybox.min.css?v=1648027768134">
+    
+    <link rel="stylesheet" href="/lib/mdui_043tiny/css/mdui.css?v=1648027768134">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1648027768134">
+    <link rel="stylesheet" href="/css/style.css?v=1648027768134">
+     
+    
 <meta name="generator" content="Hexo 6.1.0"></head>
-<body>
-  <div id="container">
-    <div id="particles-js"></div>
-    <div class="left-col">
-    <div class="overlay"></div>
-<div class="intrude-less">
-	<header id="header" class="inner">
-		<a href="/" class="profilepic">
-			
-			<img lazy-src="http://image11.m1905.cn/uploadfile/2019/ss/0409/20190409054502756.jpeg" class="js-avatar">
-			
-		</a>
 
-		<hgroup>
-		  <h1 class="header-author"><a href="/"></a></h1>
-		</hgroup>
-
-		
-
-		
-			<div class="switch-btn">
-				<div class="icon">
-					<div class="icon-ctn">
-						<div class="icon-wrap icon-house" data-idx="0">
-							<div class="birdhouse"></div>
-							<div class="birdhouse_holes"></div>
-						</div>
-						<div class="icon-wrap icon-ribbon hide" data-idx="1">
-							<div class="ribbon"></div>
-						</div>
-						
-						<div class="icon-wrap icon-link hide" data-idx="2">
-							<div class="loopback_l"></div>
-							<div class="loopback_r"></div>
-						</div>
-						
-						
-						<div class="icon-wrap icon-me hide" data-idx="3">
-							<div class="user"></div>
-							<div class="shoulder"></div>
-						</div>
-						
-					</div>
-					
-				</div>
-				<div class="tips-box hide">
-					<div class="tips-arrow"></div>
-					<ul class="tips-inner">
-						<li>菜单</li>
-						<li>标签</li>
-						
-						<li>友情链接</li>
-						
-						
-						<li>关于我</li>
-						
-					</ul>
-				</div>
-			</div>
-		
-
-		<div class="switch-area">
-			<div class="switch-wrap">
-				<section class="switch-part switch-part1">
-					<nav class="header-menu">
-						<ul>
-						
-							<li><a href="/">主页</a></li>
-				        
-							<li><a href="/archives">所有文章</a></li>
-				        
-							<li><a href="/tags/%E9%9A%8F%E7%AC%94">随笔</a></li>
-				        
-							<li><a href="/tags/acm">acm</a></li>
-				        
-							<li><a href="/tags/course">course</a></li>
-				        
-						</ul>
-					</nav>
-					<nav class="header-nav">
-						<div class="social">
-							
-								<a class="github" target="_blank" href="https://github.com/xi-qaq/" title="github">github</a>
-					        
-								<a class="qq" target="_blank" href="/799760502" title="qq">qq</a>
-					        
-						</div>
-					</nav>
-				</section>
-				
-				
-				<section class="switch-part switch-part2">
-					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/acm/" style="font-size: 20px;">acm</a> <a href="/tags/init/" style="font-size: 10px;">init</a>
-					</div>
-				</section>
-				
-				
-				
-				<section class="switch-part switch-part3">
-					<div id="js-friends">
-					
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/smackgg/hexo-theme-smackdown">smackdown</a>
-			        
-			        </div>
-				</section>
-				
-
-				
-				
-				<section class="switch-part switch-part4">
-				
-					<div id="js-aboutme">true</div>
-				</section>
-				
-			</div>
-		</div>
-	</header>				
+<body class="mdui-drawer-body-left">
+    
+    <div id="nexmoe-background">
+        <div class="nexmoe-bg" style="background-image: url(http://pic1.win4000.com/wallpaper/2/583556fda1076.jpg)"></div>
+        <div class="mdui-appbar mdui-shadow-0">
+            <div class="mdui-toolbar">
+                <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                <div class="mdui-toolbar-spacer"></div>
+                <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                <a href="/" title="Hexo" class="mdui-btn mdui-btn-icon"><img src="http://image11.m1905.cn/uploadfile/2019/ss/0409/20190409054502756.jpeg" alt="Hexo"></a>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-header">
+        <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="Hexo">
+            <img src="http://image11.m1905.cn/uploadfile/2019/ss/0409/20190409054502756.jpeg" alt="Hexo" alt="Hexo">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>6</div>
+        <div><span>标签</span>2</div>
+        <div><span>分类</span>0</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/tag/init" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/tags/acm" title="acm">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                acm
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/tags/course" title="course">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                course
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/PY.html" title="我的朋友">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                我的朋友
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+         
+            <form id="search_form" action_e="https://cn.bing.com/search?q=site:nexmoe.com" onsubmit="return search();">
+                <label><input id="search_value" name="q" type="search" placeholder="搜索"></label>
+            </form>
+         
+    </div>
 </div>
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://baidu.com" target="_blank" mdui-tooltip="{content: 'QQ群'}" style="color: rgb(249, 174, 8);background-color: rgba(249, 174, 8, .1);">
+            <i class="nexmoefont icon-QQ"></i>
+        </a><a class="mdui-ripple" href="https://space.bilibili.com/82991029" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/xi-qaq/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a>
     </div>
-    <div class="mid-col">
-      <nav id="mobile-nav">
-  	<div class="overlay">
-  		<div class="slider-trigger"></div>
-  		<h1 class="header-author js-mobile-header hide"></h1>
-  	</div>
-	<div class="intrude-less">
-		<header id="header" class="inner">
-			<div class="profilepic">
-				<img lazy-src="http://image11.m1905.cn/uploadfile/2019/ss/0409/20190409054502756.jpeg" class="js-avatar">
-			</div>
-			<hgroup>
-			  <h1 class="header-author"></h1>
-			</hgroup>
-			
-			<nav class="header-menu">
-				<ul>
-				
-					<li><a href="/">主页</a></li>
-		        
-					<li><a href="/archives">所有文章</a></li>
-		        
-					<li><a href="/tags/%E9%9A%8F%E7%AC%94">随笔</a></li>
-		        
-					<li><a href="/tags/acm">acm</a></li>
-		        
-					<li><a href="/tags/course">course</a></li>
-		        
-		        <div class="clearfix"></div>
-				</ul>
-			</nav>
-			<nav class="header-nav">
-				<div class="social">
-					
-						<a class="github" target="_blank" href="https://github.com/xi-qaq/" title="github">github</a>
-			        
-						<a class="qq" target="_blank" href="/799760502" title="qq">qq</a>
-			        
-				</div>
-			</nav>
-		</header>				
-	</div>
-</nav>
-      <div class="body-wrap"><article id="post-整理下网络流1.0" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2022/03/22/%E6%95%B4%E7%90%86%E4%B8%8B%E7%BD%91%E7%BB%9C%E6%B5%811.0/" class="article-date">
-  	<time datetime="2022-03-22T09:47:14.000Z" itemprop="datePublished">2022-03-22</time>
-</a>
+</div>
+    
+    
+
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/acm/" style="font-size: 20px;">acm</a> <a href="/tags/init/" style="font-size: 10px;">init</a>
     </div>
-  
-  <div class="article-inner">
     
-      <input type="hidden" class="isFancy" />
+  </div>
+
     
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      整理下网络流1.0
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2022 Hexo
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        <br><a target="_blank" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"><img src="https://i.dawnlab.me/c0268c1e6cfd0863d6ba35be1575941a.png" width="150px"></a><script data-ad-client="ca-pub-2058306854838448" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    </div>
+</div><!-- .nexmoe-drawer -->
+    </div>
+    <div id="nexmoe-content">
+        <div class="nexmoe-primary">
+            <div class="nexmoe-post">
+
+  <article>
       
-    </h1>
-  
-
-      </header>
+          <div class="nexmoe-post-cover" style="padding-bottom: 66.66666666666666%;"> 
+              <img data-src="http://pic1.win4000.com/wallpaper/2/583556fda1076.jpg" data-sizes="auto" alt="整理下网络流1.0" class="lazyload">
+              <h1>整理下网络流1.0</h1>
+          </div>
       
-      <div class="article-info article-info-post">
-        
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/acm/" rel="tag">acm</a></li></ul>
-	</div>
-
-        
-
-        
-          
-<div class="counter-tag counter">
-    <span id="/2022/03/22/%E6%95%B4%E7%90%86%E4%B8%8B%E7%BD%91%E7%BB%9C%E6%B5%811.0/" class="leancloud_visitors post-title-link"
-          style="font-size: 12px" data-flag-title="整理下网络流1.0">
-         &nbsp;
-        view
-    </span>
+      
+      <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2022年03月22日</a>
 </div>
 
-        
-        <div class="clearfix"></div>
-      </div>
       
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML" async></script>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML" async></script>
 
 <ul>
 <li><a href="#p3254-%E5%9C%86%E6%A1%8C%E9%97%AE%E9%A2%98%E6%9C%80%E5%A4%A7%E6%B5%81">P3254 圆桌问题（最大流）</a><ul>
@@ -314,10 +198,11 @@
 </li>
 <li><a href="#%E5%90%8E%E7%BB%AD%E5%BE%85%E6%9B%B4">后续待更</a></li>
 </ul>
+<p>[toc]</p>
 <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>再开个坑，这几天打算看看网络流，应该会以洛谷的24题为主，毕竟之前没怎么写过网络流。</p>
 <h2 id="P3254-圆桌问题（最大流）"><a href="#P3254-圆桌问题（最大流）" class="headerlink" title="P3254 圆桌问题（最大流）"></a>P3254 圆桌问题（最大流）</h2><h4 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h4><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3254">https://www.luogu.com.cn/problem/P3254</a></p>
 <p>这道基本算裸题了。</p>
-<h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><p><img src="https://img-blog.csdnimg.cn/611d718b9dfe4488abff84754581d01f.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220322175103988"></p>
+<h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><p><img data-fancybox="gallery" data-sizes="auto" data-src="https://img-blog.csdnimg.cn/611d718b9dfe4488abff84754581d01f.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220322175103988" class="lazyload"></p>
 <p><strong>输入 #1</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">4 5</span><br><span class="line">4 5 3 5</span><br><span class="line">3 5 2 6 4</span><br></pre></td></tr></table></figure>
 
@@ -328,7 +213,7 @@
 <p>源点连单位, 边权为 $r_i$</p>
 <p>餐桌连汇点，边权为 $c_i$</p>
 <p>如图：</p>
-<p><img src="https://img-blog.csdnimg.cn/3a2fef8a87924a06b77386a3f68bf8d6.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220322180143928"></p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://img-blog.csdnimg.cn/3a2fef8a87924a06b77386a3f68bf8d6.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220322180143928" class="lazyload"></p>
 <p>至于统计答案，只需要判断单位–桌子之间的边flow是不是 1 就行了</p>
 <h4 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">333</span>,M = <span class="number">333</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> maxn = N*M;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> inf = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">E</span>&#123;</span><br><span class="line">    <span class="type">int</span> to;</span><br><span class="line">    <span class="type">int</span> nxt;</span><br><span class="line">    <span class="type">int</span> flow;</span><br><span class="line">    <span class="type">int</span> cap;</span><br><span class="line">&#125;e[maxn&lt;&lt;<span class="number">1</span>];</span><br><span class="line"><span class="type">int</span> head[maxn],tot=<span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">add_edge</span><span class="params">(<span class="type">int</span> u,<span class="type">int</span> v,<span class="type">int</span> w)</span></span>&#123;</span><br><span class="line">    e[++tot].to = v;</span><br><span class="line">    e[tot].cap = w;</span><br><span class="line">    e[tot].flow = <span class="number">0</span>;</span><br><span class="line">    e[tot].nxt = head[u];</span><br><span class="line">    head[u] = tot;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> Q[maxn];</span><br><span class="line"><span class="type">int</span> dep[maxn],cur[maxn],sta[maxn];</span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">bfs</span><span class="params">(<span class="type">int</span> s,<span class="type">int</span> t,<span class="type">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> front = <span class="number">0</span>,tail = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">memset</span>(dep,<span class="number">-1</span>,<span class="keyword">sizeof</span> dep);</span><br><span class="line">    dep[s] = <span class="number">0</span>;</span><br><span class="line">    Q[tail++] = s;</span><br><span class="line">    <span class="keyword">while</span>(front&lt;tail)&#123;</span><br><span class="line">        <span class="type">int</span> u = Q[front++];</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=head[u];i!=<span class="number">-1</span>;i=e[i].nxt)&#123;</span><br><span class="line">            <span class="type">int</span> v = e[i].to;</span><br><span class="line">            <span class="keyword">if</span>(e[i].cap&gt;e[i].flow&amp;&amp;dep[v]==<span class="number">-1</span>)&#123;</span><br><span class="line">                dep[v] = dep[u]+<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(v==t) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">                Q[tail++] = v;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">dinic</span><span class="params">(<span class="type">int</span> s,<span class="type">int</span> t,<span class="type">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> maxflow = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">bfs</span>(s,t,n))&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++) cur[i] = head[i];</span><br><span class="line">        <span class="type">int</span> u = s,tail = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (cur[s]!=<span class="number">-1</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(u==t)&#123;</span><br><span class="line">                <span class="type">int</span> tp = inf;</span><br><span class="line">                <span class="keyword">for</span>(<span class="type">int</span> i=tail<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--)</span><br><span class="line">                    tp = <span class="built_in">min</span>(tp,e[sta[i]].cap-e[sta[i]].flow);</span><br><span class="line">                maxflow += tp;</span><br><span class="line">                <span class="keyword">for</span>(<span class="type">int</span> i=tail<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--)&#123;</span><br><span class="line">                    e[sta[i]].flow += tp;</span><br><span class="line">                    e[sta[i]^<span class="number">1</span>].flow -= tp;</span><br><span class="line">                    <span class="keyword">if</span>(e[sta[i]].cap-e[sta[i]].flow==<span class="number">0</span>) tail = i;</span><br><span class="line">                &#125;</span><br><span class="line">                u = e[sta[tail]^<span class="number">1</span>].to;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(cur[u]!=<span class="number">-1</span>&amp;&amp;e[cur[u]].cap&gt;e[cur[u]].flow&amp;&amp;dep[u]+<span class="number">1</span>==dep[e[cur[u]].to])&#123;</span><br><span class="line">                sta[tail++] = cur[u];</span><br><span class="line">                u = e[cur[u]].to;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">while</span>(u!=s&amp;&amp;cur[u]==<span class="number">-1</span>)</span><br><span class="line">                    u = e[sta[--tail]^<span class="number">1</span>].to;</span><br><span class="line">                cur[u] = e[cur[u]].nxt;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> maxflow;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> s,t,n,m;</span><br><span class="line">vector&lt;<span class="type">int</span>&gt; a,b;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    <span class="built_in">memset</span>(head,<span class="number">-1</span>,<span class="keyword">sizeof</span> head);</span><br><span class="line">    <span class="type">int</span> x;</span><br><span class="line">    <span class="type">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        cin&gt;&gt;x;</span><br><span class="line">        sum+=x;</span><br><span class="line">        a.<span class="built_in">push_back</span>(x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=m;j++)&#123;</span><br><span class="line">        cin&gt;&gt;x;</span><br><span class="line">        b.<span class="built_in">push_back</span>(x);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    s = <span class="number">0</span>,t = n+m+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;a.<span class="built_in">size</span>();i++)&#123;</span><br><span class="line">        <span class="built_in">add_edge</span>(s,i+<span class="number">1</span>,a[i]);</span><br><span class="line">        <span class="built_in">add_edge</span>(i+<span class="number">1</span>,s,<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;a.<span class="built_in">size</span>();i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;b.<span class="built_in">size</span>();j++)&#123;</span><br><span class="line">            <span class="type">int</span> u = i+<span class="number">1</span>,v = a.<span class="built_in">size</span>()+j+<span class="number">1</span>;</span><br><span class="line">            <span class="built_in">add_edge</span>(u,v,<span class="number">1</span>);</span><br><span class="line">            <span class="built_in">add_edge</span>(v,u,<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;b.<span class="built_in">size</span>();i++)&#123;</span><br><span class="line">        <span class="type">int</span> u = a.<span class="built_in">size</span>()+i+<span class="number">1</span>;</span><br><span class="line">        <span class="built_in">add_edge</span>(u,t,b[i]);</span><br><span class="line">        <span class="built_in">add_edge</span>(t,u,<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> ans = <span class="built_in">dinic</span>(s,t,t);</span><br><span class="line">    <span class="keyword">if</span>(ans==sum)&#123;</span><br><span class="line">        cout&lt;&lt;<span class="number">1</span>&lt;&lt;endl;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> u=<span class="number">1</span>;u&lt;=n;u++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> i=head[u];i!=<span class="number">-1</span>;i=e[i].nxt)&#123;</span><br><span class="line">                <span class="type">int</span> v = e[i].to;</span><br><span class="line">                <span class="keyword">if</span>(v==s) <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span>(e[i].flow) cout&lt;&lt;v-n&lt;&lt;<span class="string">&quot; &quot;</span>;    <span class="comment">//统计答案</span></span><br><span class="line">            &#125;</span><br><span class="line">            cout&lt;&lt;endl;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        cout&lt;&lt;<span class="number">0</span>&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -336,7 +221,7 @@
 
 <h2 id="P2762-太空飞行计划问题（最小割）"><a href="#P2762-太空飞行计划问题（最小割）" class="headerlink" title="P2762 太空飞行计划问题（最小割）"></a>P2762 太空飞行计划问题（最小割）</h2><h4 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h4><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2762">https://www.luogu.com.cn/problem/P2762</a></p>
 <p>感觉算半个结论题，虽然并不难猜…</p>
-<h4 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h4><p><img src="https://img-blog.csdnimg.cn/0742d175e0ba400c98ec18b91745644e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220322180456387"></p>
+<h4 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h4><p><img data-fancybox="gallery" data-sizes="auto" data-src="https://img-blog.csdnimg.cn/0742d175e0ba400c98ec18b91745644e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220322180456387" class="lazyload"></p>
 <p><strong>输入 #1</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">2 3</span><br><span class="line">10 1 2</span><br><span class="line">25 2 3</span><br><span class="line">5 6 7</span><br></pre></td></tr></table></figure>
 
@@ -350,7 +235,7 @@
 <p>引用洛谷评论区大佬的话，“跑最小割相当于选择部分的实验和部分的仪器，剩下的实验和仪器就会被割掉，此时再用实验的总价值减去可能得到的最大值，即为其所要求的答案” 。 </p>
 <p>我是这样想的：</p>
 <p>实验连源点，仪器连汇点，中间设inf ，如下图。（画图时脑子抽了，图里的项目应该是仪器2333）</p>
-<p><img src="https://img-blog.csdnimg.cn/cfa3244251504f2aa2c3a1bf841b8a37.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220322193518944"> </p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://img-blog.csdnimg.cn/cfa3244251504f2aa2c3a1bf841b8a37.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220322193518944" class="lazyload"> </p>
 <p>我们假设实验全都选，看看至少需要多少钱的仪器，作差就是答案。</p>
 <p>简单证明一下：</p>
 <p>设实验的全集是<strong>U</strong> ， 有一个不被选择的子集<strong>V</strong> 。 </p>
@@ -378,7 +263,7 @@
 
 
 <h2 id="P2774-方格取数问题（最小割）"><a href="#P2774-方格取数问题（最小割）" class="headerlink" title="P2774 方格取数问题（最小割）"></a>P2774 方格取数问题（最小割）</h2><p>很经典的最小割 ， 去年某不知名比赛遇到一个改版的，当时当作费用流乱搞没写出来2333</p>
-<h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><p><img src="https://img-blog.csdnimg.cn/230d7d85be2647709964a884647f9a83.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220322211312814"></p>
+<h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><p><img data-fancybox="gallery" data-sizes="auto" data-src="https://img-blog.csdnimg.cn/230d7d85be2647709964a884647f9a83.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220322211312814" class="lazyload"></p>
 <p><strong>输入 #1</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">3 3</span><br><span class="line">1 2 3</span><br><span class="line">3 2 3</span><br><span class="line">2 3 1 </span><br></pre></td></tr></table></figure>
 
@@ -391,7 +276,7 @@
 <p>一边连汇点，边权也是该点权值</p>
 <p>中间相邻的边相连，权值为inf（避免被割掉）</p>
 <p>如下图，这也是上方给出的样例的写法。</p>
-<p><img src="https://img-blog.csdnimg.cn/d4edb7199d3b41278ba9d4bba0aaede7.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220322212345870"></p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://img-blog.csdnimg.cn/d4edb7199d3b41278ba9d4bba0aaede7.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220322212345870" class="lazyload"></p>
 <p>根据最大流 &#x3D; 最小割 ， 我们对此图跑最大流后得到的就是我们想要的：</p>
 <p>用最小的权值把图切开</p>
 <p>“把图切开”，既没有一条从 S–&gt;T 的路径，也就是保证了选取合法（不选取相邻节点）</p>
@@ -405,7 +290,7 @@
 
 
 <h2 id="P1251-餐巾计划问题（费用流）"><a href="#P1251-餐巾计划问题（费用流）" class="headerlink" title="P1251 餐巾计划问题（费用流）"></a>P1251 餐巾计划问题（费用流）</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1251">https://www.luogu.com.cn/problem/P1251</a></p>
-<h4 id="题意-1"><a href="#题意-1" class="headerlink" title="题意"></a>题意</h4><p><img src="https://img-blog.csdnimg.cn/85db028f66d144ffa46e582e7d816b70.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220323154757329"></p>
+<h4 id="题意-1"><a href="#题意-1" class="headerlink" title="题意"></a>题意</h4><p><img data-fancybox="gallery" data-sizes="auto" data-src="https://img-blog.csdnimg.cn/85db028f66d144ffa46e582e7d816b70.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220323154757329" class="lazyload"></p>
 <p><strong>输入 #1</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">1 7 5 </span><br><span class="line">11 2 2 3 1</span><br></pre></td></tr></table></figure>
 
@@ -438,7 +323,7 @@
 <li><p>每天晚上连 第二天晚上，容量为$inf$ ， 费用为$0$    （将剩下的旧毛巾留到第二天）</p>
 <p>关于快慢洗这里，我们只需要连接对应的那一天就可以，不需要连接后续的每一天。因为洗好的毛巾在那之后哪一天用都一样。</p>
 <p>大致如下图 ， 中间快慢洗部分没有全部画出。</p>
-<p><img src="https://img-blog.csdnimg.cn/e3dc6df9ad4643959097a1d14bf31ac9.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220323160706737"></p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://img-blog.csdnimg.cn/e3dc6df9ad4643959097a1d14bf31ac9.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220323160706737" class="lazyload"></p>
 </li>
 </ol>
 <h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define int long long</span><br><span class="line">const int maxn= 2e5+100;</span><br><span class="line">struct E&#123;</span><br><span class="line">    int to;</span><br><span class="line">    int nxt;</span><br><span class="line">    int flow;</span><br><span class="line">    int cost;</span><br><span class="line">    int cap;</span><br><span class="line">&#125;e[maxn&lt;&lt;1];</span><br><span class="line">const int inf = 1e12+7;</span><br><span class="line">int head[maxn],tot;</span><br><span class="line">int pre[maxn],dis[maxn];</span><br><span class="line">bool vis[maxn];</span><br><span class="line">int N;</span><br><span class="line">void init(int n)&#123;</span><br><span class="line">    N = n;</span><br><span class="line">    tot = 0;</span><br><span class="line">    memset(head,-1,sizeof head);</span><br><span class="line">&#125;</span><br><span class="line">void add_edge(int u,int v,int cap,int cost)&#123;</span><br><span class="line">    e[tot].to = v;e[tot].cap = cap;</span><br><span class="line">    e[tot].cost = cost;e[tot].flow = 0;</span><br><span class="line">    e[tot].nxt = head[u];head[u] = tot++;</span><br><span class="line">    e[tot].to = u;e[tot].cap = 0;</span><br><span class="line">    e[tot].cost = -cost;e[tot].flow = 0;</span><br><span class="line">    e[tot].nxt = head[v];head[v] = tot++;</span><br><span class="line">&#125;</span><br><span class="line">bool spfa(int s,int t)&#123;</span><br><span class="line">    queue&lt;int&gt; q;</span><br><span class="line">    for(int i=0;i&lt;N;i++)&#123;</span><br><span class="line">        dis[i] = inf;</span><br><span class="line">        vis[i] = false;</span><br><span class="line">        pre[i] = -1;</span><br><span class="line">    &#125;</span><br><span class="line">    dis[s] = 0;</span><br><span class="line">    vis[s] = true;</span><br><span class="line">    q.push(s);</span><br><span class="line">    while(!q.empty())&#123;</span><br><span class="line">        int u = q.front();</span><br><span class="line">        q.pop();</span><br><span class="line">        vis[u] = false;</span><br><span class="line">        for(int i=head[u];i!=-1;i=e[i].nxt)&#123;</span><br><span class="line">            int v = e[i].to;</span><br><span class="line">            if(e[i].cap&gt;e[i].flow&amp;&amp;dis[v]&gt;dis[u]+e[i].cost)&#123;</span><br><span class="line">                dis[v] = dis[u]+e[i].cost;</span><br><span class="line">                pre[v] = i;</span><br><span class="line">                if(!vis[v])&#123;</span><br><span class="line">                    vis[v] = true;</span><br><span class="line">                    q.push(v);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if(pre[t]==-1) return false;</span><br><span class="line">    else return true;</span><br><span class="line">&#125;</span><br><span class="line">int cost_flow(int s,int t,int &amp;cost)&#123;</span><br><span class="line">    int flow = 0;</span><br><span class="line">    cost = 0;</span><br><span class="line">    while(spfa(s,t))&#123;</span><br><span class="line">        int min = inf;</span><br><span class="line">        for(int i=pre[t];i!=-1;i=pre[e[i^1].to])&#123;</span><br><span class="line">            if(min&gt;e[i].cap-e[i].flow)</span><br><span class="line">                min = e[i].cap - e[i].flow;</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i=pre[t];i!=-1;i=pre[e[i^1].to])&#123;</span><br><span class="line">            e[i].flow += min;</span><br><span class="line">            e[i^1].flow -= min;</span><br><span class="line">            cost += e[i].cost*min;</span><br><span class="line">        &#125;</span><br><span class="line">        flow += min;</span><br><span class="line">    &#125;</span><br><span class="line">    return flow;</span><br><span class="line">&#125;</span><br><span class="line">int a[maxn];</span><br><span class="line">signed main()&#123;</span><br><span class="line">    int day;</span><br><span class="line">    cin&gt;&gt;day;</span><br><span class="line">    for(int i=1;i&lt;=day;i++)&#123;</span><br><span class="line">        cin&gt;&gt;a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    int p,m,f,n,s;</span><br><span class="line">    cin&gt;&gt;p&gt;&gt;m&gt;&gt;f&gt;&gt;n&gt;&gt;s;</span><br><span class="line">    int S = 0,T = 2*day+1;</span><br><span class="line">    N = T+1;</span><br><span class="line">    init(N);</span><br><span class="line">    for(int i=1;i&lt;=day;i++)&#123;</span><br><span class="line">        int start = i,end = i+day;</span><br><span class="line">        add_edge(S,start,a[i],p);   // 源点连每天早上，容量为ri ， 费用为p   （直接买毛巾 ）</span><br><span class="line">        add_edge(S,end,a[i],0);     //  源点连每天晚上，容量为ri ， 费用为0    （早上用掉的旧毛巾）</span><br><span class="line">        add_edge(start,T,a[i],0);   //  每天早上连汇点，容量为ri ， 费用为0    （交到汇点统计答案）</span><br><span class="line">        if(start+m&lt;=day)</span><br><span class="line">            add_edge(end,start+m,inf,f);    //  （将部分旧毛巾快洗）   </span><br><span class="line">        if(start+n&lt;=day)</span><br><span class="line">            add_edge(end,start+n,inf,s);   //  （将部分旧毛巾慢洗） </span><br><span class="line">        if(i!=day)</span><br><span class="line">            add_edge(end,end+1,inf,0);   // （将剩下的旧毛巾留到第二天）</span><br><span class="line">    &#125;</span><br><span class="line">    int cost = 0;</span><br><span class="line">    N = T+1;</span><br><span class="line">    cost_flow(S,T,cost);</span><br><span class="line">    cout&lt;&lt;cost&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -447,104 +332,111 @@
 
 <h2 id="后续待更"><a href="#后续待更" class="headerlink" title="后续待更"></a>后续待更</h2><p>。。。。。。</p>
 
+  </article>
+
+  
       
+    <div class="nexmoe-post-copyright">
+        <strong>本文作者：</strong><br>
+        <strong>本文链接：</strong><a href="http://example.com/2022/03/22/%E6%95%B4%E7%90%86%E4%B8%8B%E7%BD%91%E7%BB%9C%E6%B5%811.0/" title="http:&#x2F;&#x2F;example.com&#x2F;2022&#x2F;03&#x2F;22&#x2F;%E6%95%B4%E7%90%86%E4%B8%8B%E7%BD%91%E7%BB%9C%E6%B5%811.0&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;example.com&#x2F;2022&#x2F;03&#x2F;22&#x2F;%E6%95%B4%E7%90%86%E4%B8%8B%E7%BD%91%E7%BB%9C%E6%B5%811.0&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
     </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
     
-  </div>
-  
     
-<nav id="article-nav">
-  
-  
-    <a href="/2022/03/22/%E6%9C%80%E8%BF%91%E9%81%87%E5%88%B0%E7%9A%84%E5%90%84%E7%A7%8DDP-2.0/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">最近遇到的各种DP 2.0</div>
-      <strong class="article-nav-caption">&gt;</strong>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-
-<div class="ds-share share" data-thread-key="整理下网络流1.0" data-title="整理下网络流1.0" data-url="http://example.com/2022/03/22/%E6%95%B4%E7%90%86%E4%B8%8B%E7%BD%91%E7%BB%9C%E6%B5%811.0/"  data-images="http://image11.m1905.cn/uploadfile/2019/ss/0409/20190409054502756.jpeg" data-content="整理下网络流1.0">
-    <div class="ds-share-inline">
-      <ul  class="ds-share-icons-16">
-      	<li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-        <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-      </ul>
-      <div class="ds-share-icons-more">
-      </div>
-    </div>
- </div>
- 
-
-
-
-
-
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/acm/" rel="tag">acm</a>
+    
 </div>
-      <footer id="footer">
-  <div class="outer">
-    <div id="footer-info">
-      <div class="footer-left">
-        &copy; 2022 Hexo
+
+  
+      <div class="nexmoe-post-footer">
+          <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '80b2453b6d5f37ad6225',
+        clientSecret: '43e99fa852795c9a7b3eb924b2558c64b84bbdeb',
+        id: window.location.pathname,
+        repo: 'nexmoe.github.io',
+        owner: 'nexmoe',
+        admin: 'nexmoe'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
       </div>
-        <div class="footer-right">
-          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/smackgg/hexo-theme-smackdown" target="_blank">Smackdown</a>
+  
+</div>
+            <div class="nexmoe-post-right">
+              <div class="nexmoe-fixed">
+                  <div class="nexmoe-tool"> 
+                    
+                      
+                        
+                          
+                          
+                              <button class="mdui-fab catalog" style="overflow:unset;">
+                                  <i class="nexmoefont icon-i-catalog"></i>
+                                  <div class="nexmoe-toc">
+                                      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P3254-%E5%9C%86%E6%A1%8C%E9%97%AE%E9%A2%98%EF%BC%88%E6%9C%80%E5%A4%A7%E6%B5%81%EF%BC%89"><span class="toc-number"></span> <span class="toc-text">P3254 圆桌问题（最大流）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%93%BE%E6%8E%A5"><span class="toc-number">0.1.</span> <span class="toc-text">链接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%98%E6%84%8F"><span class="toc-number">0.2.</span> <span class="toc-text">题意</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90"><span class="toc-number">0.3.</span> <span class="toc-text">解析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E4%BB%A3%E7%A0%81"><span class="toc-number">0.4.</span> <span class="toc-text">参考代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P2762-%E5%A4%AA%E7%A9%BA%E9%A3%9E%E8%A1%8C%E8%AE%A1%E5%88%92%E9%97%AE%E9%A2%98%EF%BC%88%E6%9C%80%E5%B0%8F%E5%89%B2%EF%BC%89"><span class="toc-number"></span> <span class="toc-text">P2762 太空飞行计划问题（最小割）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E9%93%BE%E6%8E%A5"><span class="toc-number">0.1.</span> <span class="toc-text">题目链接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E5%A4%A7%E6%84%8F"><span class="toc-number">0.2.</span> <span class="toc-text">题目大意</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF"><span class="toc-number">0.3.</span> <span class="toc-text">思路</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-number">0.4.</span> <span class="toc-text">代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P2774-%E6%96%B9%E6%A0%BC%E5%8F%96%E6%95%B0%E9%97%AE%E9%A2%98%EF%BC%88%E6%9C%80%E5%B0%8F%E5%89%B2%EF%BC%89"><span class="toc-number"></span> <span class="toc-text">P2774 方格取数问题（最小割）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-number">0.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-number">0.2.</span> <span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3-%E7%A0%81"><span class="toc-number">0.3.</span> <span class="toc-text">代 码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P1251-%E9%A4%90%E5%B7%BE%E8%AE%A1%E5%88%92%E9%97%AE%E9%A2%98%EF%BC%88%E8%B4%B9%E7%94%A8%E6%B5%81%EF%BC%89"><span class="toc-number"></span> <span class="toc-text">P1251 餐巾计划问题（费用流）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%98%E6%84%8F-1"><span class="toc-number">0.1.</span> <span class="toc-text">题意</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF-1"><span class="toc-number">0.2.</span> <span class="toc-text">思路</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-1"><span class="toc-number">0.3.</span> <span class="toc-text">代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8E%E7%BB%AD%E5%BE%85%E6%9B%B4"><span class="toc-number"></span> <span class="toc-text">后续待更</span></a>
+                                  </div>
+                              </button>
+                          
+                          
+                      
+                    
+                      <a href="#nexmoe-content" class="toc-link" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                  </div>
+              </div>
+            </div>
         </div>
     </div>
-  </div>
-</footer>
+     
+    <div id="nexmoe-search-space">
+        <div class="search-container">
+            <div class="search-header">
+                <div class="search-input-container">
+                    <input class="search-input" type="text" placeholder="搜索" oninput="sinput();">
+                </div>
+                <a class="search-close" onclick="sclose();">×</a>
+            </div>
+            <div class="search-body"></div>
+        </div>
     </div>
-    
-  
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+    <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+ 
+
+<script async src="/js/app.js?v=1648027768170"></script>
 
 
 
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
 <script>
-	var yiliaConfig = {
-		fancybox: true,
-		mathjax: true,
-		animate: true,
-		isHome: false,
-		isPost: true,
-		isArchive: false,
-		isTag: false,
-		isCategory: false,
-		open_in_new: true
-	}
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
 </script>
 
-<script src="/js/main.js"></script>
+
+    
 
 
 
 
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    }
-});
 
-MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';                 
-    }       
-});
-</script>
-
-<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
-
-
-  </div>
 </body>
+
 </html>

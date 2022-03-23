@@ -1,15 +1,18 @@
 <!DOCTYPE html>
-<html>
+
+<html lang="zh-CN">
+
 <head>
-  <meta charset="utf-8">
-  
-  <title>几个基础的最短路和最小生成树问题 | Hexo</title>
+    
+    <title>几个基础的最短路和最小生成树问题 - Hexo</title>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    
+    
 
-  <!-- keywords -->
-  
-
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="最短路 最短路计数 例题 代码   多源最短路问题 例题 代码 待更      前言复习一下最短路和最小生成树，都是一些最基础的应用，稍微整理一下。 最短路最短路计数其实就是询问最短路有多少条。 因为最短路算法（ Dijkstra , sfpa 等等 ) 本身都算是 BFS+贪心的过程，那么我们只需要在松弛一个节点的时候更新它邻接节点的最短路径数目就可以。 目前在节点 u ， 它有一个邻">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <meta name="description" content="最短路 最短路计数 例题 代码   多源最短路问题 例题 代码 待更      前言复习一下最短路和最小生成树，都是一些最基础的应用，稍微整理一下。 最短路最短路计数其实就是询问最短路有多少条。 因为最短路算法（ Dijkstra , sfpa 等等 ) 本身都算是 BFS+贪心的过程，那么我们只需要在松弛一个节点的时候更新它邻接节点的最短路径数目就可以。 目前在节点 u ， 它有一个邻">
 <meta property="og:type" content="article">
 <meta property="og:title" content="几个基础的最短路和最小生成树问题">
 <meta property="og:url" content="http://example.com/2022/03/21/%E5%87%A0%E4%B8%AA%E5%9F%BA%E7%A1%80%E7%9A%84%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%92%8C%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E9%97%AE%E9%A2%98/index.html">
@@ -24,261 +27,142 @@
 <meta property="article:tag" content="acm">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img-blog.csdnimg.cn/40f0b7090559409c82dcf30a14b8f418.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16">
-  
-    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg">
-  
-  
-<link rel="stylesheet" href="/css/style.css">
-
-  
-<script>
-    (function(){
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
-        }
-        else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-        }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-    })();
-</script>
-
-  
-
-  
-<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
-
-  
-<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
-
-
-  
-      <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
-<script>AV.initialize("OT60l9iub3rLVNaRWPp4nxB5-gzGzoHsz", "mrmI9GJwHo0Xra03n3itsUKA");</script>
-
-<script src="/js/Counter.js"></script>
-
-  
+    <link rel="stylesheet" href="/lib/jquery.fancybox.min.css?v=1648027768179">
+    
+    <link rel="stylesheet" href="/lib/mdui_043tiny/css/mdui.css?v=1648027768179">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1648027768179">
+    <link rel="stylesheet" href="/css/style.css?v=1648027768179">
+     
+    
 <meta name="generator" content="Hexo 6.1.0"></head>
-<body>
-  <div id="container">
-    <div id="particles-js"></div>
-    <div class="left-col">
-    <div class="overlay"></div>
-<div class="intrude-less">
-	<header id="header" class="inner">
-		<a href="/" class="profilepic">
-			
-			<img lazy-src="http://image11.m1905.cn/uploadfile/2019/ss/0409/20190409054502756.jpeg" class="js-avatar">
-			
-		</a>
 
-		<hgroup>
-		  <h1 class="header-author"><a href="/"></a></h1>
-		</hgroup>
-
-		
-
-		
-			<div class="switch-btn">
-				<div class="icon">
-					<div class="icon-ctn">
-						<div class="icon-wrap icon-house" data-idx="0">
-							<div class="birdhouse"></div>
-							<div class="birdhouse_holes"></div>
-						</div>
-						<div class="icon-wrap icon-ribbon hide" data-idx="1">
-							<div class="ribbon"></div>
-						</div>
-						
-						<div class="icon-wrap icon-link hide" data-idx="2">
-							<div class="loopback_l"></div>
-							<div class="loopback_r"></div>
-						</div>
-						
-						
-						<div class="icon-wrap icon-me hide" data-idx="3">
-							<div class="user"></div>
-							<div class="shoulder"></div>
-						</div>
-						
-					</div>
-					
-				</div>
-				<div class="tips-box hide">
-					<div class="tips-arrow"></div>
-					<ul class="tips-inner">
-						<li>菜单</li>
-						<li>标签</li>
-						
-						<li>友情链接</li>
-						
-						
-						<li>关于我</li>
-						
-					</ul>
-				</div>
-			</div>
-		
-
-		<div class="switch-area">
-			<div class="switch-wrap">
-				<section class="switch-part switch-part1">
-					<nav class="header-menu">
-						<ul>
-						
-							<li><a href="/">主页</a></li>
-				        
-							<li><a href="/archives">所有文章</a></li>
-				        
-							<li><a href="/tags/%E9%9A%8F%E7%AC%94">随笔</a></li>
-				        
-							<li><a href="/tags/acm">acm</a></li>
-				        
-							<li><a href="/tags/course">course</a></li>
-				        
-						</ul>
-					</nav>
-					<nav class="header-nav">
-						<div class="social">
-							
-								<a class="github" target="_blank" href="https://github.com/xi-qaq/" title="github">github</a>
-					        
-								<a class="qq" target="_blank" href="/799760502" title="qq">qq</a>
-					        
-						</div>
-					</nav>
-				</section>
-				
-				
-				<section class="switch-part switch-part2">
-					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/acm/" style="font-size: 20px;">acm</a> <a href="/tags/init/" style="font-size: 10px;">init</a>
-					</div>
-				</section>
-				
-				
-				
-				<section class="switch-part switch-part3">
-					<div id="js-friends">
-					
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/smackgg/hexo-theme-smackdown">smackdown</a>
-			        
-			        </div>
-				</section>
-				
-
-				
-				
-				<section class="switch-part switch-part4">
-				
-					<div id="js-aboutme">true</div>
-				</section>
-				
-			</div>
-		</div>
-	</header>				
+<body class="mdui-drawer-body-left">
+    
+    <div id="nexmoe-background">
+        <div class="nexmoe-bg" style="background-image: url(http://pic1.win4000.com/wallpaper/2/583556fda1076.jpg)"></div>
+        <div class="mdui-appbar mdui-shadow-0">
+            <div class="mdui-toolbar">
+                <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                <div class="mdui-toolbar-spacer"></div>
+                <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                <a href="/" title="Hexo" class="mdui-btn mdui-btn-icon"><img src="http://image11.m1905.cn/uploadfile/2019/ss/0409/20190409054502756.jpeg" alt="Hexo"></a>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-header">
+        <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="Hexo">
+            <img src="http://image11.m1905.cn/uploadfile/2019/ss/0409/20190409054502756.jpeg" alt="Hexo" alt="Hexo">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>6</div>
+        <div><span>标签</span>2</div>
+        <div><span>分类</span>0</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/tag/init" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/tags/acm" title="acm">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                acm
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/tags/course" title="course">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                course
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/PY.html" title="我的朋友">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                我的朋友
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+         
+            <form id="search_form" action_e="https://cn.bing.com/search?q=site:nexmoe.com" onsubmit="return search();">
+                <label><input id="search_value" name="q" type="search" placeholder="搜索"></label>
+            </form>
+         
+    </div>
 </div>
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://baidu.com" target="_blank" mdui-tooltip="{content: 'QQ群'}" style="color: rgb(249, 174, 8);background-color: rgba(249, 174, 8, .1);">
+            <i class="nexmoefont icon-QQ"></i>
+        </a><a class="mdui-ripple" href="https://space.bilibili.com/82991029" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/xi-qaq/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a>
     </div>
-    <div class="mid-col">
-      <nav id="mobile-nav">
-  	<div class="overlay">
-  		<div class="slider-trigger"></div>
-  		<h1 class="header-author js-mobile-header hide"></h1>
-  	</div>
-	<div class="intrude-less">
-		<header id="header" class="inner">
-			<div class="profilepic">
-				<img lazy-src="http://image11.m1905.cn/uploadfile/2019/ss/0409/20190409054502756.jpeg" class="js-avatar">
-			</div>
-			<hgroup>
-			  <h1 class="header-author"></h1>
-			</hgroup>
-			
-			<nav class="header-menu">
-				<ul>
-				
-					<li><a href="/">主页</a></li>
-		        
-					<li><a href="/archives">所有文章</a></li>
-		        
-					<li><a href="/tags/%E9%9A%8F%E7%AC%94">随笔</a></li>
-		        
-					<li><a href="/tags/acm">acm</a></li>
-		        
-					<li><a href="/tags/course">course</a></li>
-		        
-		        <div class="clearfix"></div>
-				</ul>
-			</nav>
-			<nav class="header-nav">
-				<div class="social">
-					
-						<a class="github" target="_blank" href="https://github.com/xi-qaq/" title="github">github</a>
-			        
-						<a class="qq" target="_blank" href="/799760502" title="qq">qq</a>
-			        
-				</div>
-			</nav>
-		</header>				
-	</div>
-</nav>
-      <div class="body-wrap"><article id="post-几个基础的最短路和最小生成树问题" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2022/03/21/%E5%87%A0%E4%B8%AA%E5%9F%BA%E7%A1%80%E7%9A%84%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%92%8C%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E9%97%AE%E9%A2%98/" class="article-date">
-  	<time datetime="2022-03-21T15:09:41.000Z" itemprop="datePublished">2022-03-21</time>
-</a>
+</div>
+    
+    
+
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/acm/" style="font-size: 20px;">acm</a> <a href="/tags/init/" style="font-size: 10px;">init</a>
     </div>
-  
-  <div class="article-inner">
     
-      <input type="hidden" class="isFancy" />
+  </div>
+
     
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      几个基础的最短路和最小生成树问题
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2022 Hexo
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        <br><a target="_blank" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"><img src="https://i.dawnlab.me/c0268c1e6cfd0863d6ba35be1575941a.png" width="150px"></a><script data-ad-client="ca-pub-2058306854838448" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    </div>
+</div><!-- .nexmoe-drawer -->
+    </div>
+    <div id="nexmoe-content">
+        <div class="nexmoe-primary">
+            <div class="nexmoe-post">
+
+  <article>
       
-    </h1>
-  
-
-      </header>
+          <div class="nexmoe-post-cover" style="padding-bottom: 66.66666666666666%;"> 
+              <img data-src="http://pic1.win4000.com/wallpaper/2/583556fda1076.jpg" data-sizes="auto" alt="几个基础的最短路和最小生成树问题" class="lazyload">
+              <h1>几个基础的最短路和最小生成树问题</h1>
+          </div>
       
-      <div class="article-info article-info-post">
-        
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/acm/" rel="tag">acm</a></li></ul>
-	</div>
-
-        
-
-        
-          
-<div class="counter-tag counter">
-    <span id="/2022/03/21/%E5%87%A0%E4%B8%AA%E5%9F%BA%E7%A1%80%E7%9A%84%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%92%8C%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E9%97%AE%E9%A2%98/" class="leancloud_visitors post-title-link"
-          style="font-size: 12px" data-flag-title="几个基础的最短路和最小生成树问题">
-         &nbsp;
-        view
-    </span>
+      
+      <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2022年03月21日</a>
 </div>
 
-        
-        <div class="clearfix"></div>
-      </div>
       
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML" async></script>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML" async></script>
 
 
 
@@ -304,14 +188,14 @@
 <p>目前在节点 u ， 它有一个邻接节点 v ，从 s –&gt; u 的最短路有 ans[u] 条。</p>
 <p>若$ dis[v] &gt; dis[u] + e[u][v]  $,我们更新$ dis[v]  $, 并将$ ans[v] $重置为$ ans[u]$ 。</p>
 <p>若$ dis[v] &#x3D; dis[u] + e[u][v]  $,我们将 $ ans[v] $ 加上 $ ans[u]$ 。</p>
-<h4 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h4><p><img src="https://img-blog.csdnimg.cn/40f0b7090559409c82dcf30a14b8f418.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220321232801256"></p>
+<h4 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h4><p><img data-fancybox="gallery" data-sizes="auto" data-src="https://img-blog.csdnimg.cn/40f0b7090559409c82dcf30a14b8f418.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220321232801256" class="lazyload"></p>
 <h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">2e6</span>+<span class="number">100</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> mod = <span class="number">100003</span>;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">E</span>&#123;</span><br><span class="line">    <span class="type">int</span> to;</span><br><span class="line">    <span class="type">int</span> nxt;</span><br><span class="line">    <span class="type">int</span> w;</span><br><span class="line">&#125;e[N&lt;&lt;<span class="number">1</span>];</span><br><span class="line"><span class="type">int</span> head[N],tot;</span><br><span class="line"><span class="type">int</span> n,m;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">add_edge</span><span class="params">(<span class="type">int</span> u,<span class="type">int</span> v,<span class="type">int</span> w)</span></span>&#123;</span><br><span class="line">    e[++tot].to = v;</span><br><span class="line">    e[tot].w = w;</span><br><span class="line">    e[tot].nxt = head[u];</span><br><span class="line">    head[u] = tot;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">bool</span> vis[N];</span><br><span class="line"><span class="type">int</span> dis[N],ans[N];</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dijkstra</span><span class="params">(<span class="type">int</span> s)</span></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(dis,<span class="number">0x3f3f3f3f</span>,<span class="keyword">sizeof</span> dis);</span><br><span class="line">    priority_queue&lt;pair&lt;<span class="type">int</span>,<span class="type">int</span>&gt;&gt; q;</span><br><span class="line">    q.<span class="built_in">push</span>(<span class="built_in">make_pair</span>(<span class="number">0</span>,s));</span><br><span class="line">    dis[s] = <span class="number">0</span>,ans[s] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(!q.<span class="built_in">empty</span>())&#123;</span><br><span class="line">        pair&lt;<span class="type">int</span>,<span class="type">int</span>&gt; now = q.<span class="built_in">top</span>();</span><br><span class="line">        <span class="type">int</span> u = now.second;</span><br><span class="line">        q.<span class="built_in">pop</span>();</span><br><span class="line">        <span class="keyword">if</span>(vis[u]) <span class="keyword">continue</span>;</span><br><span class="line">        vis[u] = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=head[u];i;i=e[i].nxt)&#123;</span><br><span class="line">            <span class="type">int</span> v = e[i].to;</span><br><span class="line">            <span class="keyword">if</span>(vis[v]) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">if</span>(dis[v]&gt;dis[u]+e[i].w)&#123;</span><br><span class="line">                dis[v] = dis[u]+e[i].w;</span><br><span class="line">                ans[v] = ans[u];</span><br><span class="line">                q.<span class="built_in">push</span>(<span class="built_in">make_pair</span>(-dis[v],v));</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(dis[v]==dis[u]+e[i].w)&#123;</span><br><span class="line">                ans[v] = (ans[v]+ans[u])%mod;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">        <span class="type">int</span> x,y;</span><br><span class="line">        cin&gt;&gt;x&gt;&gt;y;</span><br><span class="line">        <span class="built_in">add_edge</span>(x,y,<span class="number">1</span>);</span><br><span class="line">        <span class="built_in">add_edge</span>(y,x,<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">dijkstra</span>(<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        cout&lt;&lt;ans[i]&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
 <h3 id="多源最短路问题"><a href="#多源最短路问题" class="headerlink" title="多源最短路问题"></a>多源最短路问题</h3><p>有两个起点$ a ,b$ ，一个终点 $s$ , 找到一个权值最小的子图，使得 $a $能到 $s$ ，$ b$ 能到$ s $. </p>
 <p>简单来说，求 $a,b$ 到 $s$ 的最短路之和，允许路径重叠, 如下图——红色的路径即所求。。</p>
-<p><img src="https://img-blog.csdnimg.cn/deaf3d65553843818a7ce1773d28fc9e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220321233526456"></p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://img-blog.csdnimg.cn/deaf3d65553843818a7ce1773d28fc9e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220321233526456" class="lazyload"></p>
 <p>其实这个问题并不难。</p>
 <p>我们发现所有的情况下的最短路都可以归结为一种走法，那就是 a , b 先在某中间点 M 汇合（如上图5号点），再从M一起走向S。</p>
 <p>因为其他的所有特殊情况其实就是 $M&#x3D;a,M&#x3D;b,M&#x3D;s$ 的情况。</p>
@@ -323,7 +207,7 @@
 <p>因为要建反图，写起来代码可能比较长，但反正都是 ctrl c+v 一遍就好。</p>
 <h4 id="例题-1"><a href="#例题-1" class="headerlink" title="例题"></a>例题</h4><p>这个模板挺多的，比如最近的一道 leetcode :</p>
 <p>(感觉我写的好乱啊，呜呜呜~~)</p>
-<p><img src="https://img-blog.csdnimg.cn/0429c09e1a4b426ca40d5946cf986ccb.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220321235143782"></p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://img-blog.csdnimg.cn/0429c09e1a4b426ca40d5946cf986ccb.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220321235143782" class="lazyload"></p>
 <h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    long long dis[2][100100];</span><br><span class="line">    long long to[100100];</span><br><span class="line">    long long from[100100];</span><br><span class="line">    const long long inf = 1e15;</span><br><span class="line">    map&lt;int,int&gt; mp[100100];</span><br><span class="line">    struct E&#123;</span><br><span class="line">        int to;</span><br><span class="line">        int nxt;</span><br><span class="line">        int w;</span><br><span class="line">    &#125;e[100100&lt;&lt;1],e2[100100&lt;&lt;1];</span><br><span class="line">    int head[100100],tot;</span><br><span class="line">    int head2[100100],tot2;</span><br><span class="line">    int N;</span><br><span class="line">    bool vis[100100];</span><br><span class="line">    void add_edge(int u,int v,int w)&#123;</span><br><span class="line">        e[++tot].to = v;</span><br><span class="line">        e[tot].w = w;</span><br><span class="line">        e[tot].nxt = head[u];</span><br><span class="line">        head[u] = tot;</span><br><span class="line">    &#125;</span><br><span class="line">    void add_edge2(int u,int v,int w)&#123;</span><br><span class="line">        e2[++tot2].to = v;</span><br><span class="line">        e2[tot2].w = w;</span><br><span class="line">        e2[tot2].nxt = head2[u];</span><br><span class="line">        head2[u] = tot2;</span><br><span class="line">    &#125;</span><br><span class="line">    void dij(int s,int opt)&#123;</span><br><span class="line">        memset(vis, false,sizeof vis);</span><br><span class="line">        priority_queue&lt;pair&lt;long long,int&gt;&gt; q;</span><br><span class="line">        q.push(make_pair(0,s));</span><br><span class="line">        dis[opt][s] = 0;</span><br><span class="line">        while(!q.empty())&#123;</span><br><span class="line">            pair&lt;long long,int&gt; now = q.top();</span><br><span class="line">            q.pop();</span><br><span class="line">            int u = now.second;</span><br><span class="line">            if(vis[u]) continue;</span><br><span class="line">            vis[u] = true;</span><br><span class="line">            for(int i=head[u];i;i=e[i].nxt)&#123;</span><br><span class="line">                int v = e[i].to;</span><br><span class="line">                int w = e[i].w;</span><br><span class="line">                if(!vis[v]&amp;&amp;dis[opt][v]&gt;dis[opt][u]+w)&#123;</span><br><span class="line">                    dis[opt][v] = dis[opt][u]+w;</span><br><span class="line">                    q.push(make_pair(-dis[opt][v],v));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    void dij2(int s)&#123;</span><br><span class="line">        memset(vis, false,sizeof vis);</span><br><span class="line">        priority_queue&lt;pair&lt;long long ,int&gt;&gt; q;</span><br><span class="line">        q.push(make_pair(0,s));</span><br><span class="line">        to[s] = 0;</span><br><span class="line">        while(!q.empty())&#123;</span><br><span class="line">            pair&lt;int,long long&gt; now = q.top();</span><br><span class="line">            q.pop();</span><br><span class="line">            int u = now.second;</span><br><span class="line">            if(vis[u]) continue;</span><br><span class="line">            vis[u] = true;</span><br><span class="line">            for(int i=head2[u];i;i=e2[i].nxt)&#123;</span><br><span class="line">                int v = e2[i].to;</span><br><span class="line">                int w = e2[i].w;</span><br><span class="line">                if(!vis[v]&amp;&amp;to[v]&gt;to[u]+w)&#123;</span><br><span class="line">                    to[v] = to[u]+w;</span><br><span class="line">                    q.push(make_pair(-to[v],v));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    long long minimumWeight(int n, vector&lt;vector&lt;int&gt;&gt;&amp; edges, int src1, int src2, int dest) &#123;</span><br><span class="line">        N = n;</span><br><span class="line">        for(int i=0;i&lt;n;i++)&#123;</span><br><span class="line">            dis[0][i] = dis[1][i] = inf;</span><br><span class="line">            to[i] = inf;</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i=0;i&lt;edges.size();i++)&#123;</span><br><span class="line">            vector&lt;int&gt; now = edges[i];</span><br><span class="line">            int u = now[0],v = now[1],w = now[2];</span><br><span class="line">            if(!mp[u][v]) mp[u][v] = w;</span><br><span class="line">            else mp[u][v] = min(mp[u][v],w);</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i=0;i&lt;edges.size();i++)&#123;</span><br><span class="line">            vector&lt;int&gt; now = edges[i];</span><br><span class="line">            int u = now[0],v = now[1],w = now[2];</span><br><span class="line">            if(mp[u][v]!=w) continue;</span><br><span class="line">            add_edge(u,v,w);</span><br><span class="line">            add_edge2(v,u,w);</span><br><span class="line">        &#125;</span><br><span class="line">        int s1 = src1,s2 = src2,ee = dest;</span><br><span class="line">        dij(s1,0),dij(s2,1),dij2(ee);</span><br><span class="line">        for(int i=0;i&lt;n;i++)</span><br><span class="line">            from[i] = dis[0][i]+dis[1][i];</span><br><span class="line">        long long ans = inf;</span><br><span class="line">        for(int i=0;i&lt;n;i++)</span><br><span class="line">            ans = min(ans,to[i]+from[i]);</span><br><span class="line">        return (ans&gt;=inf)?-1:ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;ss;</span><br></pre></td></tr></table></figure>
 
 
@@ -332,113 +216,111 @@
 
 <h4 id="待更"><a href="#待更" class="headerlink" title="待更"></a>待更</h4><p>……</p>
 
+  </article>
+
+  
       
-    </div>
-    
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2022/03/22/%E6%9C%80%E8%BF%91%E9%81%87%E5%88%B0%E7%9A%84%E5%90%84%E7%A7%8DDP-2.0/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">&lt;</strong>
-      <div class="article-nav-title">
+    <div class="nexmoe-post-copyright">
+        <strong>本文作者：</strong><br>
+        <strong>本文链接：</strong><a href="http://example.com/2022/03/21/%E5%87%A0%E4%B8%AA%E5%9F%BA%E7%A1%80%E7%9A%84%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%92%8C%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E9%97%AE%E9%A2%98/" title="http:&#x2F;&#x2F;example.com&#x2F;2022&#x2F;03&#x2F;21&#x2F;%E5%87%A0%E4%B8%AA%E5%9F%BA%E7%A1%80%E7%9A%84%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%92%8C%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E9%97%AE%E9%A2%98&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;example.com&#x2F;2022&#x2F;03&#x2F;21&#x2F;%E5%87%A0%E4%B8%AA%E5%9F%BA%E7%A1%80%E7%9A%84%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%92%8C%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E9%97%AE%E9%A2%98&#x2F;</a><br>
         
-          最近遇到的各种DP 2.0
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
         
-      </div>
-    </a>
-  
-  
-    <a href="/2022/03/19/%E6%9C%80%E8%BF%91%E9%81%87%E5%88%B0%E7%9A%84%E5%90%84%E7%A7%8DDP-1.0/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">最近遇到的各种DP 1.0</div>
-      <strong class="article-nav-caption">&gt;</strong>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-
-<div class="ds-share share" data-thread-key="几个基础的最短路和最小生成树问题" data-title="几个基础的最短路和最小生成树问题" data-url="http://example.com/2022/03/21/%E5%87%A0%E4%B8%AA%E5%9F%BA%E7%A1%80%E7%9A%84%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%92%8C%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E9%97%AE%E9%A2%98/"  data-images="http://image11.m1905.cn/uploadfile/2019/ss/0409/20190409054502756.jpeg" data-content="几个基础的最短路和最小生成树问题">
-    <div class="ds-share-inline">
-      <ul  class="ds-share-icons-16">
-      	<li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-        <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-      </ul>
-      <div class="ds-share-icons-more">
-      </div>
     </div>
- </div>
- 
 
 
-
-
-
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/acm/" rel="tag">acm</a>
+    
 </div>
-      <footer id="footer">
-  <div class="outer">
-    <div id="footer-info">
-      <div class="footer-left">
-        &copy; 2022 Hexo
+
+  
+      <div class="nexmoe-post-footer">
+          <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '80b2453b6d5f37ad6225',
+        clientSecret: '43e99fa852795c9a7b3eb924b2558c64b84bbdeb',
+        id: window.location.pathname,
+        repo: 'nexmoe.github.io',
+        owner: 'nexmoe',
+        admin: 'nexmoe'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
       </div>
-        <div class="footer-right">
-          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/smackgg/hexo-theme-smackdown" target="_blank">Smackdown</a>
+  
+</div>
+            <div class="nexmoe-post-right">
+              <div class="nexmoe-fixed">
+                  <div class="nexmoe-tool"> 
+                    
+                      
+                        
+                          
+                          
+                              <button class="mdui-fab catalog" style="overflow:unset;">
+                                  <i class="nexmoefont icon-i-catalog"></i>
+                                  <div class="nexmoe-toc">
+                                      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E7%9F%AD%E8%B7%AF"><span class="toc-number"></span> <span class="toc-text">最短路</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E7%9F%AD%E8%B7%AF%E8%AE%A1%E6%95%B0"><span class="toc-number">1.</span> <span class="toc-text">最短路计数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BE%8B%E9%A2%98"><span class="toc-number">1.1.</span> <span class="toc-text">例题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-number">1.2.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E6%BA%90%E6%9C%80%E7%9F%AD%E8%B7%AF%E9%97%AE%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">多源最短路问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BE%8B%E9%A2%98-1"><span class="toc-number">2.1.</span> <span class="toc-text">例题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-1"><span class="toc-number">2.2.</span> <span class="toc-text">代码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BE%85%E6%9B%B4"><span class="toc-number">2.3.</span> <span class="toc-text">待更</span></a></li></ol></li></ol>
+                                  </div>
+                              </button>
+                          
+                          
+                      
+                    
+                      <a href="#nexmoe-content" class="toc-link" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                  </div>
+              </div>
+            </div>
         </div>
     </div>
-  </div>
-</footer>
+     
+    <div id="nexmoe-search-space">
+        <div class="search-container">
+            <div class="search-header">
+                <div class="search-input-container">
+                    <input class="search-input" type="text" placeholder="搜索" oninput="sinput();">
+                </div>
+                <a class="search-close" onclick="sclose();">×</a>
+            </div>
+            <div class="search-body"></div>
+        </div>
     </div>
-    
-  
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+    <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+ 
+
+<script async src="/js/app.js?v=1648027768191"></script>
 
 
 
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
 <script>
-	var yiliaConfig = {
-		fancybox: true,
-		mathjax: true,
-		animate: true,
-		isHome: false,
-		isPost: true,
-		isArchive: false,
-		isTag: false,
-		isCategory: false,
-		open_in_new: true
-	}
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
 </script>
 
-<script src="/js/main.js"></script>
+
+    
 
 
 
 
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    }
-});
 
-MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';                 
-    }       
-});
-</script>
-
-<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
-
-
-  </div>
 </body>
+
 </html>
