@@ -1,174 +1,39 @@
 <!DOCTYPE html>
-
-<html lang="zh-CN">
-
+<html lang="zh">
 <head>
-    
-    <title>2021 acm-icpc区域赛(上海)补题笔记 - Hexo</title>
     <meta charset="UTF-8">
-    <meta name="keywords" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="google-site-verification" content="TZE0rZyIqLl10trYu3BWBWa1Vmz6HFwhb2OcNEK4u-s" />
+     <link rel="shortcut icon" href= /img/favicon.ico >
+    <title>
+        Hexo
+    </title>
+    <meta name="description" content= 嘿，我是Xi～这是我的博客，用于记录一些我感兴趣的东西。欢迎访问！ >
+    <meta name="keywords" content= Blog,Hexo,Theme,刘训灼,LiuXunzhuo >
     
-    
+<link rel="stylesheet" href="/libs/highlight/styles/monokai-sublime.css">
 
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-    <meta name="description" content="标签链接：  ······ CSDN : https:&#x2F;&#x2F;blog.csdn.net&#x2F;weixin_45924828&#x2F;article&#x2F;details&#x2F;123869176?spm&#x3D;1001.2014.3001.5502  前言 题目一览 D.Strange_Fractions(签到) 题意 思路   E.Strange_Integerss(签到) 题意 思路   G.Edge Groups（树形dp">
-<meta property="og:type" content="article">
-<meta property="og:title" content="2021 acm-icpc区域赛(上海)补题笔记">
-<meta property="og:url" content="http://example.com/2022/03/29/2021acm-icpc%E5%8C%BA%E5%9F%9F%E8%B5%9B(%E4%B8%8A%E6%B5%B7)%E8%A1%A5%E9%A2%98%E7%AC%94%E8%AE%B0/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="标签链接：  ······ CSDN : https:&#x2F;&#x2F;blog.csdn.net&#x2F;weixin_45924828&#x2F;article&#x2F;details&#x2F;123869176?spm&#x3D;1001.2014.3001.5502  前言 题目一览 D.Strange_Fractions(签到) 题意 思路   E.Strange_Integerss(签到) 题意 思路   G.Edge Groups（树形dp">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/89def377c5b7402d88771ab025d3fb24.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/e6bcc4d63e0b4cd5a4cc68684bdf260f.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/d7e55c07832d47f6a9af2164cc512acb.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/ce91a0fec58d418dba4bfd3341319e49.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/300f323558594c1b982c54df20579832.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/c6baf468ed8b463f9120ac3d14775388.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/3e32b07adfac4bd79f089de454a02ecc.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/3418e50ffb9148eead55b8dc6bbaa975.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/b91b17cf96a549b4b47e35bc22de152e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16">
-<meta property="article:published_time" content="2022-03-29T01:30:40.000Z">
-<meta property="article:modified_time" content="2022-03-31T11:42:01.860Z">
-<meta property="article:tag" content="acm">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/89def377c5b7402d88771ab025d3fb24.png">
-    <link rel="stylesheet" href="/lib/jquery.fancybox.min.css?v=1648728367452">
     
-    <link rel="stylesheet" href="/lib/mdui_043tiny/css/mdui.css?v=1648728367452">
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1648728367452">
-    <link rel="stylesheet" href="/css/style.css?v=1648728367452">
-     
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
     
+<link rel="stylesheet" href="/css/style.css">
+
 <meta name="generator" content="Hexo 6.1.0"></head>
-
-<body class="mdui-drawer-body-left">
-    
-    <div id="nexmoe-background">
-        <div class="nexmoe-bg" style="background-image: url(http://pic1.win4000.com/wallpaper/2/583556fda1076.jpg)"></div>
-        <div class="mdui-appbar mdui-shadow-0">
-            <div class="mdui-toolbar">
-                <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
-                <div class="mdui-toolbar-spacer"></div>
-                <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
-                <a href="/" title="Hexo" class="mdui-btn mdui-btn-icon"><img src="http://image11.m1905.cn/uploadfile/2019/ss/0409/20190409054502756.jpeg" alt="Hexo"></a>
-            </div>
-        </div>
+<body id="bodyx">
+    <div class="hd posts">
+    <a href="/index.html"><i class="fa fa-home
+ replay-btn" aria-hidden="true"></i></a>
+    <div class="post-title">
+        <p>
+            2021 acm-icpc区域赛(上海)补题笔记
+        </p>
+        <hr>
     </div>
-    <div id="nexmoe-header">
-        <div class="nexmoe-drawer mdui-drawer" id="drawer">
-    <div class="nexmoe-avatar mdui-ripple">
-        <a href="/" title="Hexo">
-            <img src="http://image11.m1905.cn/uploadfile/2019/ss/0409/20190409054502756.jpeg" alt="Hexo" alt="Hexo">
-        </a>
-    </div>
-    <div class="nexmoe-count">
-        <div><span>文章</span>7</div>
-        <div><span>标签</span>2</div>
-        <div><span>分类</span>0</div>
-    </div>
-    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
-        
-        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
-            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
-            <div class="mdui-list-item-content">
-                回到首页
-            </div>
-        </a>
-        
-        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/tag/init" title="关于博客">
-            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
-            <div class="mdui-list-item-content">
-                关于博客
-            </div>
-        </a>
-        
-        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/tags/acm" title="acm">
-            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
-            <div class="mdui-list-item-content">
-                acm
-            </div>
-        </a>
-        
-        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/tags/course" title="course">
-            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
-            <div class="mdui-list-item-content">
-                course
-            </div>
-        </a>
-        
-        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/PY.html" title="我的朋友">
-            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
-            <div class="mdui-list-item-content">
-                我的朋友
-            </div>
-        </a>
-        
-    </div>
-    <aside id="nexmoe-sidebar">
-    
-    <div class="nexmoe-widget-wrap">
-    <div class="nexmoe-widget nexmoe-search">
-         
-            <form id="search_form" action_e="https://cn.bing.com/search?q=site:nexmoe.com" onsubmit="return search();">
-                <label><input id="search_value" name="q" type="search" placeholder="搜索"></label>
-            </form>
-         
-    </div>
-</div>
-    
-    <div class="nexmoe-widget-wrap">
-    <div class="nexmoe-widget nexmoe-social">
-        <a class="mdui-ripple" href="https://baidu.com" target="_blank" mdui-tooltip="{content: 'QQ群'}" style="color: rgb(249, 174, 8);background-color: rgba(249, 174, 8, .1);">
-            <i class="nexmoefont icon-QQ"></i>
-        </a><a class="mdui-ripple" href="https://space.bilibili.com/82991029" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
-            <i class="nexmoefont icon-bilibili"></i>
-        </a><a class="mdui-ripple" href="https://github.com/xi-qaq/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
-            <i class="nexmoefont icon-github"></i>
-        </a>
-    </div>
-</div>
-    
-    
-
-    
-    
-  <div class="nexmoe-widget-wrap">
-    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
-      <a href="/tags/acm/" style="font-size: 20px;">acm</a> <a href="/tags/init/" style="font-size: 10px;">init</a>
-    </div>
-    
-  </div>
-
-    
-</aside>
-    <div class="nexmoe-copyright">
-        &copy; 2022 Hexo
-        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
-        <br><a target="_blank" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"><img src="https://i.dawnlab.me/c0268c1e6cfd0863d6ba35be1575941a.png" width="150px"></a><script data-ad-client="ca-pub-2058306854838448" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    </div>
-</div><!-- .nexmoe-drawer -->
-    </div>
-    <div id="nexmoe-content">
-        <div class="nexmoe-primary">
-            <div class="nexmoe-post">
-
-  <article>
-      
-          <div class="nexmoe-post-cover" style="padding-bottom: 66.66666666666666%;"> 
-              <img data-src="http://pic1.win4000.com/wallpaper/2/583556fda1076.jpg" data-sizes="auto" alt="2021 acm-icpc区域赛(上海)补题笔记" class="lazyload">
-              <h1>2021 acm-icpc区域赛(上海)补题笔记</h1>
-          </div>
-      
-      
-      <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
-    <a><i class="nexmoefont icon-calendar-fill"></i>2022年03月29日</a>
-</div>
-
-      
-
-      <h6 id="标签链接："><a href="#标签链接：" class="headerlink" title="标签链接："></a>标签链接：</h6><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML" async></script>
+    <div class="post-content">
+        <h6 id="标签链接："><a href="#标签链接：" class="headerlink" title="标签链接："></a>标签链接：</h6><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML" async></script>
 
 <p>······</p>
 <p>CSDN : <a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45924828/article/details/123869176?spm=1001.2014.3001.5502">https://blog.csdn.net/weixin_45924828/article/details/123869176?spm=1001.2014.3001.5502</a></p>
@@ -224,7 +89,7 @@
 <p>金牌题：B</p>
 <p>大概不是我能做的题：A,C,F,L</p>
 <p><strong>本场差不多是5题铜，6.5题银，8题金</strong></p>
-<h2 id="D-Strange-Fractions-签到"><a href="#D-Strange-Fractions-签到" class="headerlink" title="D.Strange_Fractions(签到)"></a>D.Strange_Fractions(签到)</h2><h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><p><img data-fancybox="gallery" data-sizes="auto" data-src="https://img-blog.csdnimg.cn/89def377c5b7402d88771ab025d3fb24.png" alt="image-20220331112836696" class="lazyload"></p>
+<h2 id="D-Strange-Fractions-签到"><a href="#D-Strange-Fractions-签到" class="headerlink" title="D.Strange_Fractions(签到)"></a>D.Strange_Fractions(签到)</h2><h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><p><img src="https://img-blog.csdnimg.cn/89def377c5b7402d88771ab025d3fb24.png" alt="image-20220331112836696"></p>
 <h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>初中数学，设 $x &#x3D; \frac ab $ , 有 $\frac pq  &#x3D; x + \frac1x$ , 求根公式解出来即可。</p>
 <h2 id="E-Strange-Integerss-签到"><a href="#E-Strange-Integerss-签到" class="headerlink" title="E.Strange_Integerss(签到)"></a>E.Strange_Integerss(签到)</h2><h4 id="题意-1"><a href="#题意-1" class="headerlink" title="题意"></a>题意</h4><p>从 <em>n</em> 个数中选出 <em>m</em> 个数使得两两之差绝对值不低于 <em>k</em> ， 要求最⼤化 <em>m</em> 。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">11 2</span><br><span class="line">3 1 4 1 5 9 2 6 5 3 5</span><br></pre></td></tr></table></figure>
@@ -232,14 +97,14 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4</span><br></pre></td></tr></table></figure>
 
 <h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><p>排序后从⼩到⼤贪⼼选取合法且尽可能接近的数字即可</p>
-<h2 id="G-Edge-Groups（树形dp"><a href="#G-Edge-Groups（树形dp" class="headerlink" title="G.Edge Groups（树形dp)"></a>G.Edge Groups（树形dp)</h2><h4 id="题意-2"><a href="#题意-2" class="headerlink" title="题意"></a>题意</h4><p><img data-fancybox="gallery" data-sizes="auto" data-src="https://img-blog.csdnimg.cn/e6bcc4d63e0b4cd5a4cc68684bdf260f.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220331113937997" class="lazyload"></p>
+<h2 id="G-Edge-Groups（树形dp"><a href="#G-Edge-Groups（树形dp" class="headerlink" title="G.Edge Groups（树形dp)"></a>G.Edge Groups（树形dp)</h2><h4 id="题意-2"><a href="#题意-2" class="headerlink" title="题意"></a>题意</h4><p><img src="https://img-blog.csdnimg.cn/e6bcc4d63e0b4cd5a4cc68684bdf260f.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220331113937997"></p>
 <p>求树分解成若⼲⻓度为2 的路径的⽅案数。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">7</span><br><span class="line">1 2</span><br><span class="line">1 3</span><br><span class="line">1 7</span><br><span class="line">4 7</span><br><span class="line">5 7</span><br><span class="line">6 7</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure>
 
 <h4 id="思路-2"><a href="#思路-2" class="headerlink" title="思路"></a>思路</h4><p>很板子的树dp，队友写的，没看。官方题解：</p>
-<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://img-blog.csdnimg.cn/d7e55c07832d47f6a9af2164cc512acb.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220331114232880" class="lazyload">## </p>
+<p><img src="https://img-blog.csdnimg.cn/d7e55c07832d47f6a9af2164cc512acb.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220331114232880">## </p>
 <h2 id="I-Steadily-Growing-Steam-背包"><a href="#I-Steadily-Growing-Steam-背包" class="headerlink" title="I.Steadily Growing Steam(背包)"></a>I.Steadily Growing Steam(背包)</h2><h4 id="题意："><a href="#题意：" class="headerlink" title="题意："></a>题意：</h4><p>题目有点长，大意是：</p>
 <p>n件物品具有体积 $t_i$ 和价值 $v_i$ ，选出⾄多 $k$ 件物品 将其体积翻倍，然后选出若⼲物品并将其分为 <strong>体积和</strong> 相同的两堆$S,T$，问选出的物品 <strong>价值之和</strong> 最⼤是多少。</p>
 <p>输入</p>
@@ -272,7 +137,7 @@
 
 <h2 id="H-Life-is-a-Game-kruskal重构树-树上倍增"><a href="#H-Life-is-a-Game-kruskal重构树-树上倍增" class="headerlink" title="H.Life is a Game (kruskal重构树+树上倍增)"></a>H.Life is a Game (kruskal重构树+树上倍增)</h2><h4 id="题意：-1"><a href="#题意：-1" class="headerlink" title="题意："></a>题意：</h4><p>⼀张带边权带点权⽆向图。从某点出发，有初始声望。 每第⼀次到达⼀个点将获得点权等值的声望加成。 </p>
 <p>经过⼀条边需要满⾜边权等值的最低声望限制。 多次给出起点和初始声望，询问能达到的最⼤声望。</p>
-<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://img-blog.csdnimg.cn/ce91a0fec58d418dba4bfd3341319e49.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220331120606044" class="lazyload"></p>
+<p><img src="https://img-blog.csdnimg.cn/ce91a0fec58d418dba4bfd3341319e49.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220331120606044"></p>
 <h4 id="思路：-1"><a href="#思路：-1" class="headerlink" title="思路："></a>思路：</h4><p>铜牌题越来越难了啊。</p>
 <p>我们不会kruskal重构树，那天用堆+启发式合并硬搞出来的。</p>
 <p>现在补题主要写一写kruskal重构树的解法，毕竟可以离线做这道题。</p>
@@ -282,15 +147,15 @@
 <p>在本题中 ， $tot$ 节点可以维护两个信息 ，$a_u + a_v$ 和 $w(u,v)$ 。</p>
 <p>本题的感想是kruskal重构树是一个很好的思路，它用很少的时间和空间维护了并查集的一些关键信息。</p>
 <p>样例的重构树长这样：</p>
-<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://img-blog.csdnimg.cn/300f323558594c1b982c54df20579832.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220331122050153" class="lazyload"></p>
+<p><img src="https://img-blog.csdnimg.cn/300f323558594c1b982c54df20579832.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220331122050153"></p>
 <p>然后树上倍增维护每个节点的第i级父节点，查询的时候倍增地查就好了。</p>
 <p>官方解答：</p>
-<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://img-blog.csdnimg.cn/c6baf468ed8b463f9120ac3d14775388.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220331122247796" class="lazyload"></p>
+<p><img src="https://img-blog.csdnimg.cn/c6baf468ed8b463f9120ac3d14775388.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220331122247796"></p>
 <h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define int long long</span><br><span class="line">const int N = 1e5+100;</span><br><span class="line">struct node&#123;</span><br><span class="line">    int u;</span><br><span class="line">    int v;</span><br><span class="line">    int w;</span><br><span class="line">    bool operator&lt;(node B) const&#123;</span><br><span class="line">        return w&lt;B.w;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;e[N&lt;&lt;1];</span><br><span class="line">int a[N&lt;&lt;1];</span><br><span class="line">int n,m,q;</span><br><span class="line">int fa[N&lt;&lt;1];</span><br><span class="line">vector&lt;int&gt; g[N&lt;&lt;1];</span><br><span class="line">int val[N&lt;&lt;1];</span><br><span class="line">int ff[N&lt;&lt;1][22];</span><br><span class="line">int tot;</span><br><span class="line">int find_fa(int x)&#123;</span><br><span class="line">    return (fa[x]==x)?fa[x]:fa[x] = find_fa(fa[x]);</span><br><span class="line">&#125;</span><br><span class="line">void Kruskal()&#123;</span><br><span class="line">    tot = n;</span><br><span class="line">    for(int i=1;i&lt;=m;i++)&#123;</span><br><span class="line">        int u = find_fa(e[i].u),v = find_fa(e[i].v),w = e[i].w;</span><br><span class="line">        if(find_fa(u)!= find_fa(v))&#123;</span><br><span class="line">            tot++;</span><br><span class="line">            val[tot] = w;</span><br><span class="line">            g[tot].push_back(u);</span><br><span class="line">            g[tot].push_back(v);</span><br><span class="line">            g[u].push_back(tot);</span><br><span class="line">            g[v].push_back(tot);</span><br><span class="line">            fa[u] = fa[v] = fa[tot] = tot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">void dfs(int u,int f)&#123;</span><br><span class="line">    ff[u][0] = f;</span><br><span class="line">    for(int i=1;i&lt;=20;i++)&#123;</span><br><span class="line">        ff[u][i] = ff[ff[u][i-1]][i-1];</span><br><span class="line">    &#125;</span><br><span class="line">    for(auto v:g[u])&#123;</span><br><span class="line">        if(v==f) continue;</span><br><span class="line">        dfs(v,u);</span><br><span class="line">        a[u] += a[v];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">signed main()&#123;</span><br><span class="line">    ios::sync_with_stdio(false);</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m&gt;&gt;q;</span><br><span class="line">    for(int i=1;i&lt;=n;i++) cin&gt;&gt;a[i],fa[i] = i;</span><br><span class="line">    for(int i=1;i&lt;=m;i++)&#123;</span><br><span class="line">        int x,y,z;</span><br><span class="line">        cin&gt;&gt;x&gt;&gt;y&gt;&gt;z;</span><br><span class="line">        e[i] = &#123;x,y,z&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    sort(e+1,e+1+m);</span><br><span class="line">    Kruskal();</span><br><span class="line">    dfs(tot,0);</span><br><span class="line">    val[0] = 1e15+7;</span><br><span class="line">    while(q--)&#123;</span><br><span class="line">        int u,x;</span><br><span class="line">        cin&gt;&gt;u&gt;&gt;x;</span><br><span class="line">        int now = x+a[u];</span><br><span class="line">        while(now!=tot)&#123;</span><br><span class="line">            //cout&lt;&lt;u&lt;&lt;&quot; &quot;&lt;&lt;x&lt;&lt;endl;</span><br><span class="line">            bool ok = false;</span><br><span class="line">            for(int i=20;i&gt;=0;i--)&#123;</span><br><span class="line">                if(val[ff[u][i]]&lt;=now)&#123;</span><br><span class="line">                    u = ff[u][i];</span><br><span class="line">                    ok = true;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            if(!ok) break;</span><br><span class="line">            now = x+a[u];</span><br><span class="line">        &#125;</span><br><span class="line">        cout&lt;&lt;now&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="K-Circle-of-Life-打表-构造"><a href="#K-Circle-of-Life-打表-构造" class="headerlink" title="K.Circle of Life(打表+构造)"></a>K.Circle of Life(打表+构造)</h2><h4 id="题意-3"><a href="#题意-3" class="headerlink" title="题意"></a>题意</h4><p><img data-fancybox="gallery" data-sizes="auto" data-src="https://img-blog.csdnimg.cn/3e32b07adfac4bd79f089de454a02ecc.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220331122835362" class="lazyload"></p>
+<h2 id="K-Circle-of-Life-打表-构造"><a href="#K-Circle-of-Life-打表-构造" class="headerlink" title="K.Circle of Life(打表+构造)"></a>K.Circle of Life(打表+构造)</h2><h4 id="题意-3"><a href="#题意-3" class="headerlink" title="题意"></a>题意</h4><p><img src="https://img-blog.csdnimg.cn/3e32b07adfac4bd79f089de454a02ecc.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220331122835362"></p>
 <h4 id="思路-3"><a href="#思路-3" class="headerlink" title="思路"></a>思路</h4><p>找规律题，感觉如果把重构树写完还能剩一些时间的话大概率都能写写这题。。。</p>
 <p>把题意模拟出来，然后发现是构造</p>
 <p>发现n &#x3D; 6时只有两种解：100110，（另一个忘了）</p>
@@ -299,8 +164,8 @@
 
 
 
-<h2 id="J-Two-Binary-Strings-Problem（bitset-位运算）"><a href="#J-Two-Binary-Strings-Problem（bitset-位运算）" class="headerlink" title="J.Two Binary Strings Problem（bitset+位运算）"></a>J.Two Binary Strings Problem（bitset+位运算）</h2><h4 id="题意：-2"><a href="#题意：-2" class="headerlink" title="题意："></a>题意：</h4><p><img data-fancybox="gallery" data-sizes="auto" data-src="https://img-blog.csdnimg.cn/3418e50ffb9148eead55b8dc6bbaa975.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220331123245147" class="lazyload"></p>
-<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://img-blog.csdnimg.cn/b91b17cf96a549b4b47e35bc22de152e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220331123445490" class="lazyload"></p>
+<h2 id="J-Two-Binary-Strings-Problem（bitset-位运算）"><a href="#J-Two-Binary-Strings-Problem（bitset-位运算）" class="headerlink" title="J.Two Binary Strings Problem（bitset+位运算）"></a>J.Two Binary Strings Problem（bitset+位运算）</h2><h4 id="题意：-2"><a href="#题意：-2" class="headerlink" title="题意："></a>题意：</h4><p><img src="https://img-blog.csdnimg.cn/3418e50ffb9148eead55b8dc6bbaa975.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220331123245147"></p>
+<p><img src="https://img-blog.csdnimg.cn/b91b17cf96a549b4b47e35bc22de152e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220331123445490"></p>
 <p><strong>输入</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">5</span><br><span class="line">11010</span><br><span class="line">11000</span><br><span class="line">8</span><br><span class="line">11110000</span><br><span class="line">11111100</span><br></pre></td></tr></table></figure>
 
@@ -330,111 +195,66 @@
 <p>呜呜呜，我怎么什么都不会呀</p>
 <p>有空再更吧。。。。</p>
 
-  </article>
-
-  
-      
-    <div class="nexmoe-post-copyright">
-        <strong>本文作者：</strong><br>
-        <strong>本文链接：</strong><a href="http://example.com/2022/03/29/2021acm-icpc%E5%8C%BA%E5%9F%9F%E8%B5%9B(%E4%B8%8A%E6%B5%B7)%E8%A1%A5%E9%A2%98%E7%AC%94%E8%AE%B0/" title="http:&#x2F;&#x2F;example.com&#x2F;2022&#x2F;03&#x2F;29&#x2F;2021acm-icpc%E5%8C%BA%E5%9F%9F%E8%B5%9B(%E4%B8%8A%E6%B5%B7)%E8%A1%A5%E9%A2%98%E7%AC%94%E8%AE%B0&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;example.com&#x2F;2022&#x2F;03&#x2F;29&#x2F;2021acm-icpc%E5%8C%BA%E5%9F%9F%E8%B5%9B(%E4%B8%8A%E6%B5%B7)%E8%A1%A5%E9%A2%98%E7%AC%94%E8%AE%B0&#x2F;</a><br>
-        
-            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
-        
     </div>
 
-
-  
-  
-  <div class="nexmoe-post-meta nexmoe-rainbow">
     
-    
-        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/acm/" rel="tag">acm</a>
+        <hr class="fhr">
+        <div id="vcomments"></div>
     
 </div>
-
-  
-      <div class="nexmoe-post-footer">
-          <section class="nexmoe-comment">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css">
-<div id="gitalk"></div>
-<script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script>
-<script type="text/javascript">
-    var gitalk = new Gitalk({
-        clientID: '80b2453b6d5f37ad6225',
-        clientSecret: '43e99fa852795c9a7b3eb924b2558c64b84bbdeb',
-        id: window.location.pathname,
-        repo: 'nexmoe.github.io',
-        owner: 'nexmoe',
-        admin: 'nexmoe'
-    })
-    gitalk.render('gitalk')
-</script>
-</section>
-      </div>
-  
-</div>
-            <div class="nexmoe-post-right">
-              <div class="nexmoe-fixed">
-                  <div class="nexmoe-tool"> 
-                    
-                      
-                        
-                          
-                          
-                              <button class="mdui-fab catalog" style="overflow:unset;">
-                                  <i class="nexmoefont icon-i-catalog"></i>
-                                  <div class="nexmoe-toc">
-                                      <ol class="toc"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%A0%87%E7%AD%BE%E9%93%BE%E6%8E%A5%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">标签链接：</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number"></span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E4%B8%80%E8%A7%88"><span class="toc-number"></span> <span class="toc-text">题目一览</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#D-Strange-Fractions-%E7%AD%BE%E5%88%B0"><span class="toc-number"></span> <span class="toc-text">D.Strange_Fractions(签到)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%98%E6%84%8F"><span class="toc-number"></span> <span class="toc-text">题意</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF"><span class="toc-number"></span> <span class="toc-text">思路</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#E-Strange-Integerss-%E7%AD%BE%E5%88%B0"><span class="toc-number"></span> <span class="toc-text">E.Strange_Integerss(签到)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%98%E6%84%8F-1"><span class="toc-number"></span> <span class="toc-text">题意</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF-1"><span class="toc-number"></span> <span class="toc-text">思路</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#G-Edge-Groups%EF%BC%88%E6%A0%91%E5%BD%A2dp"><span class="toc-number"></span> <span class="toc-text">G.Edge Groups（树形dp)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%98%E6%84%8F-2"><span class="toc-number"></span> <span class="toc-text">题意</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF-2"><span class="toc-number"></span> <span class="toc-text">思路</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#I-Steadily-Growing-Steam-%E8%83%8C%E5%8C%85"><span class="toc-number"></span> <span class="toc-text">I.Steadily Growing Steam(背包)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%98%E6%84%8F%EF%BC%9A"><span class="toc-number"></span> <span class="toc-text">题意：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%EF%BC%9A"><span class="toc-number"></span> <span class="toc-text">思路：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%EF%BC%9A"><span class="toc-number"></span> <span class="toc-text">代码：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#H-Life-is-a-Game-kruskal%E9%87%8D%E6%9E%84%E6%A0%91-%E6%A0%91%E4%B8%8A%E5%80%8D%E5%A2%9E"><span class="toc-number"></span> <span class="toc-text">H.Life is a Game (kruskal重构树+树上倍增)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%98%E6%84%8F%EF%BC%9A-1"><span class="toc-number"></span> <span class="toc-text">题意：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%EF%BC%9A-1"><span class="toc-number"></span> <span class="toc-text">思路：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-number"></span> <span class="toc-text">代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#K-Circle-of-Life-%E6%89%93%E8%A1%A8-%E6%9E%84%E9%80%A0"><span class="toc-number"></span> <span class="toc-text">K.Circle of Life(打表+构造)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%98%E6%84%8F-3"><span class="toc-number"></span> <span class="toc-text">题意</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF-3"><span class="toc-number"></span> <span class="toc-text">思路</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%EF%BC%9A-1"><span class="toc-number"></span> <span class="toc-text">代码：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#J-Two-Binary-Strings-Problem%EF%BC%88bitset-%E4%BD%8D%E8%BF%90%E7%AE%97%EF%BC%89"><span class="toc-number"></span> <span class="toc-text">J.Two Binary Strings Problem（bitset+位运算）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%98%E6%84%8F%EF%BC%9A-2"><span class="toc-number"></span> <span class="toc-text">题意：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%EF%BC%9A-2"><span class="toc-number"></span> <span class="toc-text">思路：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#B-Strange-Permutations-%EF%BC%88%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0-x2F-NTT-%E5%AE%B9%E6%96%A5%EF%BC%89"><span class="toc-number"></span> <span class="toc-text">B.Strange Permutations （生成函数 &#x2F; NTT+容斥）</span></a>
-                                  </div>
-                              </button>
-                          
-                          
-                      
-                    
-                      <a href="#nexmoe-content" class="toc-link" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
-                  </div>
-              </div>
-            </div>
-        </div>
-    </div>
-     
-    <div id="nexmoe-search-space">
-        <div class="search-container">
-            <div class="search-header">
-                <div class="search-input-container">
-                    <input class="search-input" type="text" placeholder="搜索" oninput="sinput();">
-                </div>
-                <a class="search-close" onclick="sclose();">×</a>
-            </div>
-            <div class="search-body"></div>
-        </div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
-
- 
-
-<script async src="/js/app.js?v=1648728367472"></script>
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
-<script>
-	$(".justified-gallery").justifiedGallery({
-		rowHeight: 160,
-		margins: 10,
-	});
-</script>
-
-
+    <div class="footer" id="footer">
+    <p><h4>Copyright © 2020 | Author: xi-qaq | Theme By <a class="theme-author" target="_blank" rel="noopener" href="https://github.com/Xunzhuo/hexo-theme-coder" style="font-size:14px; color: #969696">Coder</a></h4>
     
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span id="busuanzi_container_site_pv">Page Views: <span id="busuanzi_value_site_pv"></span></span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv">Unique Visitors: <span id="busuanzi_value_site_uv"></span></span>
+    
+    <label class="el-switch el-switch-blue el-switch-sm" style="vertical-align: sub;">
+        <input type="checkbox" name="switch" id="update_style">
+        <span class="el-switch-style"></span>
+    </label>
+
+    <!--         <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");
+    document.write(unescape("%3Cspan id='cnzz_stat_icon_1278548644'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/stat.php%3Fid%3D1278548644%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script> -->
+</p>
+</div>
+
+<input type="hidden" id="web_style" value="black">
+<input type="hidden" id="valine_appid" value="">
+<input type="hidden" id="valine_appKey" value="">
+
+<script src="/libs/jquery.min.js"></script>
 
 
+<script src="/libs/highlight/highlight.pack.js"></script>
 
+<script src='//cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
 
+<script src="/js/js.js"></script>
 
+<style type="text/css">
+.v * {
+color: #698fca;
+}
+.v .vlist .vcard .vhead .vsys {
+color: #3a3e4a;
+}
+.v .vlist .vcard .vh .vmeta .vat {
+color: #638fd5;
+}
+.v .vlist .vcard .vhead .vnick {
+color: #6ba1ff;
+}
+.v a {
+color: #8696b1;
+}
+.v .vlist .vcard .vhead .vnick:hover {
+color: #669bfc;
+}
+</style>
+    <script type="text/javascript" color="173,174,173" opacity='1' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 </body>
-
 </html>
