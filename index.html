@@ -222,6 +222,233 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2021acm-icpc区域赛(上海)补题笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/03/29/2021acm-icpc%E5%8C%BA%E5%9F%9F%E8%B5%9B(%E4%B8%8A%E6%B5%B7)%E8%A1%A5%E9%A2%98%E7%AC%94%E8%AE%B0/" class="article-date">
+  	<time datetime="2022-03-29T01:30:40.000Z" itemprop="datePublished">2022-03-29</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/03/29/2021acm-icpc%E5%8C%BA%E5%9F%9F%E8%B5%9B(%E4%B8%8A%E6%B5%B7)%E8%A1%A5%E9%A2%98%E7%AC%94%E8%AE%B0/">
+        2021 acm-icpc区域赛(上海)补题笔记
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML" async></script>
+
+<ul>
+<li><a href="#%E5%89%8D%E8%A8%80">前言</a></li>
+<li><a href="#%E9%A2%98%E7%9B%AE%E4%B8%80%E8%A7%88">题目一览</a></li>
+<li><a href="#dstrange_fractions%E7%AD%BE%E5%88%B0">D.Strange_Fractions(签到)</a><ul>
+<li><a href="#%E9%A2%98%E6%84%8F">题意</a></li>
+<li><a href="#%E6%80%9D%E8%B7%AF">思路</a></li>
+</ul>
+</li>
+<li><a href="#estrange_integerss%E7%AD%BE%E5%88%B0">E.Strange_Integerss(签到)</a><ul>
+<li><a href="#%E9%A2%98%E6%84%8F-1">题意</a></li>
+<li><a href="#%E6%80%9D%E8%B7%AF-1">思路</a></li>
+</ul>
+</li>
+<li><a href="#gedge-groups%E6%A0%91%E5%BD%A2dp">G.Edge Groups（树形dp)</a><ul>
+<li><a href="#%E9%A2%98%E6%84%8F-2">题意</a></li>
+<li><a href="#%E6%80%9D%E8%B7%AF-2">思路</a></li>
+</ul>
+</li>
+<li><a href="#isteadily-growing-steam%E8%83%8C%E5%8C%85">I.Steadily Growing Steam(背包)</a><ul>
+<li><a href="#%E9%A2%98%E6%84%8F-3">题意：</a></li>
+<li><a href="#%E6%80%9D%E8%B7%AF-3">思路：</a></li>
+<li><a href="#%E4%BB%A3%E7%A0%81">代码：</a></li>
+</ul>
+</li>
+<li><a href="#hlife-is-a-game-kruskal%E9%87%8D%E6%9E%84%E6%A0%91%E6%A0%91%E4%B8%8A%E5%80%8D%E5%A2%9E">H.Life is a Game (kruskal重构树+树上倍增)</a><ul>
+<li><a href="#%E9%A2%98%E6%84%8F-4">题意：</a></li>
+<li><a href="#%E6%80%9D%E8%B7%AF-4">思路：</a></li>
+<li><a href="#%E4%BB%A3%E7%A0%81-1">代码</a></li>
+</ul>
+</li>
+<li><a href="#kcircle-of-life%E6%89%93%E8%A1%A8%E6%9E%84%E9%80%A0">K.Circle of Life(打表+构造)</a><ul>
+<li><a href="#%E9%A2%98%E6%84%8F-5">题意</a></li>
+<li><a href="#%E6%80%9D%E8%B7%AF-5">思路</a></li>
+<li><a href="#%E4%BB%A3%E7%A0%81-2">代码：</a></li>
+</ul>
+</li>
+<li><a href="#jtwo-binary-strings-problembitset%E4%BD%8D%E8%BF%90%E7%AE%97">J.Two Binary Strings Problem（bitset+位运算）</a><ul>
+<li><a href="#%E9%A2%98%E6%84%8F-6">题意：</a></li>
+<li><a href="#%E6%80%9D%E8%B7%AF-6">思路：</a></li>
+</ul>
+</li>
+<li><a href="#bstrange-permutations-%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0--ntt%E5%AE%B9%E6%96%A5">B.<strong>Strange Permutations</strong> （生成函数 &#x2F; NTT+容斥）</a></li>
+</ul>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>赛前打几场重现赛模拟一下，争取把力所能及的题都补了</p>
+<p>yysy，今年大部分赛站卷的程度已经非往年可比的了。。。。</p>
+<p>比赛链接：<a target="_blank" rel="noopener" href="https://ac.nowcoder.com/acm/contest/24872">https://ac.nowcoder.com/acm/contest/24872</a></p>
+<h2 id="题目一览"><a href="#题目一览" class="headerlink" title="题目一览"></a>题目一览</h2><p>签到题：D,E,G,I</p>
+<p>铜牌题：H</p>
+<p>银牌题：J,K,M</p>
+<p>金牌题：B</p>
+<p>大概不是我能做的题：A,C,F,L</p>
+<p><strong>本场差不多是5题铜，6.5题银，8题金</strong></p>
+<h2 id="D-Strange-Fractions-签到"><a href="#D-Strange-Fractions-签到" class="headerlink" title="D.Strange_Fractions(签到)"></a>D.Strange_Fractions(签到)</h2><h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><p><img src="https://img-blog.csdnimg.cn/89def377c5b7402d88771ab025d3fb24.png" alt="image-20220331112836696"></p>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>初中数学，设 $x &#x3D; \frac ab $ , 有 $\frac pq  &#x3D; x + \frac1x$ , 求根公式解出来即可。</p>
+<h2 id="E-Strange-Integerss-签到"><a href="#E-Strange-Integerss-签到" class="headerlink" title="E.Strange_Integerss(签到)"></a>E.Strange_Integerss(签到)</h2><h4 id="题意-1"><a href="#题意-1" class="headerlink" title="题意"></a>题意</h4><p>从 <em>n</em> 个数中选出 <em>m</em> 个数使得两两之差绝对值不低于 <em>k</em> ， 要求最⼤化 <em>m</em> 。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">11 2</span><br><span class="line">3 1 4 1 5 9 2 6 5 3 5</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4</span><br></pre></td></tr></table></figure>
+
+<h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><p>排序后从⼩到⼤贪⼼选取合法且尽可能接近的数字即可</p>
+<h2 id="G-Edge-Groups（树形dp"><a href="#G-Edge-Groups（树形dp" class="headerlink" title="G.Edge Groups（树形dp)"></a>G.Edge Groups（树形dp)</h2><h4 id="题意-2"><a href="#题意-2" class="headerlink" title="题意"></a>题意</h4><p><img src="https://img-blog.csdnimg.cn/e6bcc4d63e0b4cd5a4cc68684bdf260f.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220331113937997"></p>
+<p>求树分解成若⼲⻓度为 的路径的⽅案数。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">7</span><br><span class="line">1 2</span><br><span class="line">1 3</span><br><span class="line">1 7</span><br><span class="line">4 7</span><br><span class="line">5 7</span><br><span class="line">6 7</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure>
+
+<h4 id="思路-2"><a href="#思路-2" class="headerlink" title="思路"></a>思路</h4><p>很板子的树dp，队友写的，没看。官方题解：</p>
+<p><img src="https://img-blog.csdnimg.cn/d7e55c07832d47f6a9af2164cc512acb.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220331114232880">## </p>
+<h2 id="I-Steadily-Growing-Steam-背包"><a href="#I-Steadily-Growing-Steam-背包" class="headerlink" title="I.Steadily Growing Steam(背包)"></a>I.Steadily Growing Steam(背包)</h2><h4 id="题意："><a href="#题意：" class="headerlink" title="题意："></a>题意：</h4><p>题目有点长，大意是：</p>
+<p>n件物品具有体积 $t_i$ 和价值 $v_i$ ，选出⾄多 $k$ 件物品 将其体积翻倍，然后选出若⼲物品并将其分为 <strong>体积和</strong> 相同的两堆$S,T$，问选出的物品 <strong>价值之和</strong> 最⼤是多少。</p>
+<p>输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">4 1</span><br><span class="line">10 1</span><br><span class="line">-5 3</span><br><span class="line">5 1</span><br><span class="line">6 1</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">21</span><br></pre></td></tr></table></figure>
+
+<p>One possible scheme:</p>
+<p>Double $t_1$ and choose that  $S&#x3D;{1},T&#x3D;{3,4}$, where the point number sum are both 2, and the sum of the card values is $10+5+6&#x3D;21$.</p>
+<h4 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h4><p>很显然是01背包，其实挺签到的，但却把我们卡了一个多钟。</p>
+<p>主要是一直在想两个集合怎么相互转移的问题。</p>
+<p>后来想到两个集合是可以合并的。</p>
+<p>我们假设装进集合S的物品体积为 $+t_i$  , 那么可以假设装进集合T的物品体积为 $-t_i$ ,这样动态转移的终点就会在体积和 $V&#x3D;0$ 处了。</p>
+<p>具体地，设 $dp[N][V][K]$ 表示当前在第i个物品 ， 体积和为V，已经将K件物品翻倍。</p>
+<p>然后第$i$个物品只会从第 $i-1$ 个物品转移，所以第一维的N可以用滚动数组滚掉，变成 $dp[2][V][K]$.</p>
+<p>我们将每个物品拆分成四个：</p>
+<p> $aa &#x3D; (v_i , t_i)$ ,$bb &#x3D; (v_i ,- t_i) $</p>
+<p>$ cc &#x3D; (v_i , 2<em>t_i) , $$ dd &#x3D; (v_i , -2</em>t_i)$</p>
+<p>那么：</p>
+<p>$dp[i][V][K] &#x3D; max(dp[i][V][K],dp[i\oplus1][V-aa][j]+v[i])$</p>
+<p>$dp[i][V][K] &#x3D; max(dp[i][V][K],dp[i\oplus1][V-bb][j]+v[i])$</p>
+<p>$dp[i][V][K] &#x3D; max(dp[i][V][K],dp[i\oplus1][V-cc][j-1]+v[i])$ $, K&gt;0$</p>
+<p>$dp[i][V][K] &#x3D; max(dp[i][V][K],dp[i\oplus1][V-dd][j-1]+v[i])$ $,K&gt;0$</p>
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define int long long</span><br><span class="line">const int N = 111;</span><br><span class="line">int dp[2][5555][111];</span><br><span class="line">int n,k;</span><br><span class="line">int v[N],t[N];</span><br><span class="line">signed main()&#123;</span><br><span class="line">    ios::sync_with_stdio(false);</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;k;</span><br><span class="line">    for(int i=1;i&lt;=n;i++)&#123;</span><br><span class="line">        cin&gt;&gt;v[i]&gt;&gt;t[i];</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i=0;i&lt;=5500;i++)</span><br><span class="line">        for(int j=0;j&lt;=110;j++)</span><br><span class="line">            dp[0][i][j] = dp[1][i][j] = -1e15;</span><br><span class="line">        int now = 0,ans = 0;</span><br><span class="line">        dp[now][2800][0] = 0;</span><br><span class="line">        for(int i=1;i&lt;=n;i++)&#123;</span><br><span class="line">            now = now^1;</span><br><span class="line">            int aa = t[i],bb = -t[i],cc = 2*t[i],dd = -2*t[i];</span><br><span class="line">            for(int V=-2600;V&lt;=2600;V++)&#123;</span><br><span class="line">                for(int j=0;j&lt;=k;j++)&#123;</span><br><span class="line">                    int tmp = V+2800;</span><br><span class="line">                    dp[now][tmp][j] = dp[now^1][tmp][j];</span><br><span class="line">                    dp[now][tmp][j] = max(dp[now][tmp][j],dp[now^1][tmp-aa][j]+v[i]);</span><br><span class="line">                    dp[now][tmp][j] = max(dp[now][tmp][j],dp[now^1][tmp-bb][j]+v[i]);</span><br><span class="line">                    if(k&gt;0)&#123;</span><br><span class="line">                        dp[now][tmp][j] = max(dp[now][tmp][j],dp[now^1][tmp-cc][j-1]+v[i]);</span><br><span class="line">                        dp[now][tmp][j] = max(dp[now][tmp][j],dp[now^1][tmp-dd][j-1]+v[i]);</span><br><span class="line">                    &#125;</span><br><span class="line">                    ans = max(ans,dp[now][tmp][j]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        cout&lt;&lt;ans&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="H-Life-is-a-Game-kruskal重构树-树上倍增"><a href="#H-Life-is-a-Game-kruskal重构树-树上倍增" class="headerlink" title="H.Life is a Game (kruskal重构树+树上倍增)"></a>H.Life is a Game (kruskal重构树+树上倍增)</h2><h4 id="题意：-1"><a href="#题意：-1" class="headerlink" title="题意："></a>题意：</h4><p>⼀张带边权带点权⽆向图。从某点出发，有初始声望。 每第⼀次到达⼀个点将获得点权等值的声望加成。 </p>
+<p>经过⼀条边需要满⾜边权等值的最低声望限制。 多次给出起点和初始声望，询问能达到的最⼤声望。</p>
+<p><img src="https://img-blog.csdnimg.cn/ce91a0fec58d418dba4bfd3341319e49.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220331120606044"></p>
+<h4 id="思路：-1"><a href="#思路：-1" class="headerlink" title="思路："></a>思路：</h4><p>铜牌题越来越难了啊。</p>
+<p>我们不会kruskal重构树，那天用堆+启发式合并硬搞出来的。</p>
+<p>现在补题主要写一写kruskal重构树的解法，毕竟可以离线做这道题。</p>
+<p>洛谷上的kruskal重构树：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P7834">https://www.luogu.com.cn/problem/P7834</a> （不过洛谷这题加了主席树维护第k大）</p>
+<p>其实就是在kruskal的过程中建树：</p>
+<p>把边按边权从小到大排序，并查集合并两端点$u,v$ 的同时新建一个节点$tot$ , 节点$tot$连接$u,v$ , 且维护$u,v$点的共同信息</p>
+<p>在本题中 ， $tot$ 节点可以维护两个信息 ，$a_u + a_v$ 和 $w(u,v)$ 。</p>
+<p>本题的感想是kruskal重构树是一个很好的思路，它用很少的时间和空间维护了并查集的一些关键信息。</p>
+<p>样例的重构树长这样：</p>
+<p><img src="https://img-blog.csdnimg.cn/300f323558594c1b982c54df20579832.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220331122050153"></p>
+<p>然后树上倍增维护每个节点的第i级父节点，查询的时候倍增地查就好了。</p>
+<p>官方解答：</p>
+<p><img src="https://img-blog.csdnimg.cn/c6baf468ed8b463f9120ac3d14775388.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220331122247796"></p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define int long long</span><br><span class="line">const int N = 1e5+100;</span><br><span class="line">struct node&#123;</span><br><span class="line">    int u;</span><br><span class="line">    int v;</span><br><span class="line">    int w;</span><br><span class="line">    bool operator&lt;(node B) const&#123;</span><br><span class="line">        return w&lt;B.w;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;e[N&lt;&lt;1];</span><br><span class="line">int a[N&lt;&lt;1];</span><br><span class="line">int n,m,q;</span><br><span class="line">int fa[N&lt;&lt;1];</span><br><span class="line">vector&lt;int&gt; g[N&lt;&lt;1];</span><br><span class="line">int val[N&lt;&lt;1];</span><br><span class="line">int ff[N&lt;&lt;1][22];</span><br><span class="line">int tot;</span><br><span class="line">int find_fa(int x)&#123;</span><br><span class="line">    return (fa[x]==x)?fa[x]:fa[x] = find_fa(fa[x]);</span><br><span class="line">&#125;</span><br><span class="line">void Kruskal()&#123;</span><br><span class="line">    tot = n;</span><br><span class="line">    for(int i=1;i&lt;=m;i++)&#123;</span><br><span class="line">        int u = find_fa(e[i].u),v = find_fa(e[i].v),w = e[i].w;</span><br><span class="line">        if(find_fa(u)!= find_fa(v))&#123;</span><br><span class="line">            tot++;</span><br><span class="line">            val[tot] = w;</span><br><span class="line">            g[tot].push_back(u);</span><br><span class="line">            g[tot].push_back(v);</span><br><span class="line">            g[u].push_back(tot);</span><br><span class="line">            g[v].push_back(tot);</span><br><span class="line">            fa[u] = fa[v] = fa[tot] = tot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">void dfs(int u,int f)&#123;</span><br><span class="line">    ff[u][0] = f;</span><br><span class="line">    for(int i=1;i&lt;=20;i++)&#123;</span><br><span class="line">        ff[u][i] = ff[ff[u][i-1]][i-1];</span><br><span class="line">    &#125;</span><br><span class="line">    for(auto v:g[u])&#123;</span><br><span class="line">        if(v==f) continue;</span><br><span class="line">        dfs(v,u);</span><br><span class="line">        a[u] += a[v];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">signed main()&#123;</span><br><span class="line">    ios::sync_with_stdio(false);</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m&gt;&gt;q;</span><br><span class="line">    for(int i=1;i&lt;=n;i++) cin&gt;&gt;a[i],fa[i] = i;</span><br><span class="line">    for(int i=1;i&lt;=m;i++)&#123;</span><br><span class="line">        int x,y,z;</span><br><span class="line">        cin&gt;&gt;x&gt;&gt;y&gt;&gt;z;</span><br><span class="line">        e[i] = &#123;x,y,z&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    sort(e+1,e+1+m);</span><br><span class="line">    Kruskal();</span><br><span class="line">    dfs(tot,0);</span><br><span class="line">    val[0] = 1e15+7;</span><br><span class="line">    while(q--)&#123;</span><br><span class="line">        int u,x;</span><br><span class="line">        cin&gt;&gt;u&gt;&gt;x;</span><br><span class="line">        int now = x+a[u];</span><br><span class="line">        while(now!=tot)&#123;</span><br><span class="line">            //cout&lt;&lt;u&lt;&lt;&quot; &quot;&lt;&lt;x&lt;&lt;endl;</span><br><span class="line">            bool ok = false;</span><br><span class="line">            for(int i=20;i&gt;=0;i--)&#123;</span><br><span class="line">                if(val[ff[u][i]]&lt;=now)&#123;</span><br><span class="line">                    u = ff[u][i];</span><br><span class="line">                    ok = true;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            if(!ok) break;</span><br><span class="line">            now = x+a[u];</span><br><span class="line">        &#125;</span><br><span class="line">        cout&lt;&lt;now&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="K-Circle-of-Life-打表-构造"><a href="#K-Circle-of-Life-打表-构造" class="headerlink" title="K.Circle of Life(打表+构造)"></a>K.Circle of Life(打表+构造)</h2><h4 id="题意-3"><a href="#题意-3" class="headerlink" title="题意"></a>题意</h4><p><img src="https://img-blog.csdnimg.cn/3e32b07adfac4bd79f089de454a02ecc.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220331122835362"></p>
+<h4 id="思路-3"><a href="#思路-3" class="headerlink" title="思路"></a>思路</h4><p>找规律题，感觉如果把重构树写完还能剩一些时间的话大概率都能写写这题。。。</p>
+<p>把题意模拟出来，然后发现是构造</p>
+<p>发现n &#x3D; 6时只有两种解：100110，（另一个忘了）</p>
+<p>然后以这两个为主去找规律，发现1001可以作为循环节，然后没了。</p>
+<h4 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">string s[4] = &#123;&quot;1001&quot;,&quot;10001&quot;,&quot;100110&quot;,&quot;1001010&quot;&#125;;</span><br><span class="line">int main()&#123;</span><br><span class="line">    ios::sync_with_stdio(false);</span><br><span class="line">    int n;</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    if(n==2)&#123;</span><br><span class="line">        cout&lt;&lt;&quot;10&quot;&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    else if(n==3)&#123;</span><br><span class="line">        cout&lt;&lt;&quot;Unlucky&quot;&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    else if(n&lt;=7)&#123;</span><br><span class="line">        cout&lt;&lt;s[n-4]&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    else&#123;</span><br><span class="line">        int tot = (n-4)/4;</span><br><span class="line">        int res = (n-4)%4;</span><br><span class="line">        for(int i=0;i&lt;tot;i++) cout&lt;&lt;&quot;1001&quot;;</span><br><span class="line">        cout&lt;&lt;s[res]&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="J-Two-Binary-Strings-Problem（bitset-位运算）"><a href="#J-Two-Binary-Strings-Problem（bitset-位运算）" class="headerlink" title="J.Two Binary Strings Problem（bitset+位运算）"></a>J.Two Binary Strings Problem（bitset+位运算）</h2><h4 id="题意：-2"><a href="#题意：-2" class="headerlink" title="题意："></a>题意：</h4><p><img src="https://img-blog.csdnimg.cn/3418e50ffb9148eead55b8dc6bbaa975.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220331123245147"></p>
+<p><img src="https://img-blog.csdnimg.cn/b91b17cf96a549b4b47e35bc22de152e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220331123445490"></p>
+<p><strong>输入</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">5</span><br><span class="line">11010</span><br><span class="line">11000</span><br><span class="line">8</span><br><span class="line">11110000</span><br><span class="line">11111100</span><br></pre></td></tr></table></figure>
+
+<p><strong>输出</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">01000</span><br><span class="line">00001100</span><br></pre></td></tr></table></figure>
+
+<h4 id="思路：-2"><a href="#思路：-2" class="headerlink" title="思路："></a>思路：</h4><p>会不会用bitset决定了这题能不能写。。。。</p>
+<p>很显然，打暴力的话复杂度是 $O（n^2)$</p>
+<p>对于32位整型INT ， 用bitset通过位运算打暴力的复杂度是 $O(\frac {n^2}{32})$</p>
+<p>但是细节很多，对着逆十字的代码看了半天才弄明白。。。</p>
+<p>把0变成-1，然后维护前缀和$sum[]$</p>
+<p>把前缀和排个序，大的在前面</p>
+<p>然后按顺序遍历一遍</p>
+<p>于是惊奇的发现，如果前面访问的位置$i$比之后访问的位置$j$小，那么$j$这个位置肯定是不行的</p>
+<p>因为既然有 $sum[i] &gt; sum[j]$ 且 $i &lt; j$</p>
+<p>那么就必然存在一个 $k$ ,使得 $sum[j] - sum[j-k] &lt;&#x3D;0$ ,也就是 $[j-k,j]$ 这个区间的0不比1少</p>
+<p>所以开一个bitset A ， 把顺序遍历时对应的位置pos标上，代表该位置被访问了。</p>
+<p>对于 $b[i] &#x3D; 0$ 的情况，其实就是将$b[i] &#x3D; 1$时的各项取反</p>
+<p>那么再开一个bitset one,置为全1 ， 因为二进制数 异或 全1就是取反。</p>
+<p>然后一个bitset ans 记录答案，每次遍历时拿bitset A 更新ans.</p>
+<p>代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int N = 50500;</span><br><span class="line">char a[N],b[N];</span><br><span class="line">int s[N],id[N];</span><br><span class="line">bitset&lt;N&gt; A,ans,one;</span><br><span class="line">bool cmp(int xx,int yy)&#123;</span><br><span class="line">    return s[xx]==s[yy]?xx&lt;yy:s[xx]&gt;s[yy];</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">    ios::sync_with_stdio(false);</span><br><span class="line">    int t;</span><br><span class="line">    cin&gt;&gt;t;</span><br><span class="line"></span><br><span class="line">    while(t--)&#123;</span><br><span class="line">        A.reset(),ans.reset(),one.reset();</span><br><span class="line">        int n;</span><br><span class="line">        cin&gt;&gt;n;</span><br><span class="line">        cin&gt;&gt;(a+1);</span><br><span class="line">        cin&gt;&gt;(b+1);</span><br><span class="line">        int tg = n+1;</span><br><span class="line">        for(int i=1;i&lt;=n;i++) one[i] = 1;</span><br><span class="line">        id[0] = 0;</span><br><span class="line">        for(int i=1;i&lt;=n;i++)&#123;</span><br><span class="line">            s[i] = s[i-1]+((a[i]==&#x27;1&#x27;)?1:-1);</span><br><span class="line">            id[i] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        sort(id,id+1+n,cmp);</span><br><span class="line">        for(int i=0;i&lt;=n;i++)&#123;</span><br><span class="line">            int pos = id[i];</span><br><span class="line">            if(pos) &#123;</span><br><span class="line">                if (b[pos] == &#x27;1&#x27;) &#123;</span><br><span class="line">                    ans = ans | (A &gt;&gt; (n - pos));</span><br><span class="line">                    if (s[pos] &lt;= 0) tg = min(tg, pos + 1);</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    ans = ans | ((A ^ one) &gt;&gt; (n - pos));</span><br><span class="line">                    if (s[pos] &gt; 0) tg = min(tg, pos + 1);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            A[n-pos] = 1;</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i=1;i&lt;=n;i++)&#123;</span><br><span class="line">            if(ans[i]||i&gt;=tg) cout&lt;&lt;0;</span><br><span class="line">            else cout&lt;&lt;1;</span><br><span class="line">        &#125;</span><br><span class="line">        cout&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="B-Strange-Permutations-（生成函数-x2F-NTT-容斥）"><a href="#B-Strange-Permutations-（生成函数-x2F-NTT-容斥）" class="headerlink" title="B.Strange Permutations （生成函数 &#x2F; NTT+容斥）"></a>B.<strong>Strange Permutations</strong> （生成函数 &#x2F; NTT+容斥）</h2><p>呜呜呜，不会生成函数，不会快速傅里叶变换，不会数论变换</p>
+<p>呜呜呜，我怎么什么都不会呀</p>
+<p>有空再更吧。。。。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/acm/" rel="tag">acm</a></li></ul>
+	</div>
+
+      
+
+      
+        
+<div class="counter-tag counter">
+    <span id="/2022/03/29/2021acm-icpc%E5%8C%BA%E5%9F%9F%E8%B5%9B(%E4%B8%8A%E6%B5%B7)%E8%A1%A5%E9%A2%98%E7%AC%94%E8%AE%B0/" class="leancloud_visitors post-title-link"
+          style="font-size: 12px" data-flag-title="2021 acm-icpc区域赛(上海)补题笔记">
+         &nbsp;
+        view
+    </span>
+</div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-整理下网络流1.0" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -390,7 +617,7 @@
 <p>一开始想每天早上连晚上 ， 然后最后一天早上连汇点 ， 容量为 $\sum_{i&#x3D;1}^n r_i$</p>
 <p>后来发现行不通，还是会和旧毛巾冲突到。</p>
 <p>经题解区提醒，发现可以直接让源点连旧毛巾到每天晚上：</p>
-<p>相当于每天早上“用完新毛巾后直接上交汇点统计，当了晚上源点送出相同数量的旧毛巾”</p>
+<p>相当于每天早上“用完新毛巾后直接上交汇点统计，到了晚上源点送出相同数量的旧毛巾”</p>
 <p>这与每天“用完$r_i$条新毛巾后变为旧毛巾”是等价的 ， 而且避免了上述建模冲突。</p>
 <p><strong>具体建模方法</strong></p>
 <ol>
