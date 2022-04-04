@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="google-site-verification" content="TZE0rZyIqLl10trYu3BWBWa1Vmz6HFwhb2OcNEK4u-s" />
+     <link rel="shortcut icon" href= /img/favicon.ico >
+    <title>
+        Hexo
+    </title>
+    <meta name="description" content= 嘿，我是Xi～这是我的博客，用于记录一些我感兴趣的东西。欢迎访问！ >
+    <meta name="keywords" content= Blog,Hexo,Theme,刘训灼,LiuXunzhuo >
+    
+<link rel="stylesheet" href="/libs/highlight/styles/monokai-sublime.css">
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+<body id="bodyx">
+    <div class="hd posts">
+    <a href="/index.html"><i class="fa fa-home
+ replay-btn" aria-hidden="true"></i></a>
+    <div class="post-title">
+        <p>
+            2021 acm-icpc区域赛(南京)补题笔记
+        </p>
+        <hr>
+    </div>
+    <div class="post-content">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML" async></script>
+
+<p>CSDN : <a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45924828/article/">https://blog.csdn.net/weixin_45924828/article/</a></p>
+<p>[toc]</p>
+<!-- toc -->
+<ul>
+<li><a href="#前言">前言</a></li>
+<li><a href="#题目一览">题目一览</a></li>
+<li><a href="#aoops-its-yesterday-twice-more签到">A.Oops, It’s Yesterday Twice More（签到）</a></li>
+<li><a href="#m-windblume-festival签到">M. Windblume Festival（签到）</a></li>
+<li><a href="#c-klee-in-solitary-confinement思维前缀和">C. Klee in Solitary Confinement（思维+前缀和）</a></li>
+<li><a href="#h-crystalfly树形dp">H. Crystalfly（树形dp)</a></li>
+<li><a href="#dpaimon-sorting思维数据结构">D.Paimon Sorting(思维+数据结构)</a></li>
+<li><a href="#j-xingqius-joke数学数论">J. Xingqiu’s Joke（数学，数论）</a></li>
+<li><a href="#i-cloud-retainers-game">I. Cloud Retainer’s Game</a></li>
+</ul>
+<!-- tocstop -->
+<h2><span id="前言">前言</span></h2><p>2021南京，号称最卷的icpc区域赛。</p>
+<p>上周末训练赛和队友打了一下，争取多补几道题。</p>
+<p>比赛链接：<a target="_blank" rel="noopener" href="https://codeforces.com/gym/103470">https://codeforces.com/gym/103470</a></p>
+<h2><span id="题目一览">题目一览</span></h2><p>签到题：A,C,M,H</p>
+<p>铜牌题：D</p>
+<p>银牌题：J</p>
+<p>金牌题：I ，G</p>
+<p>我不能做的题：B，F，K，L</p>
+<p><strong>本场差不多是4.5题铜，5.5题银，7题金（4题铜5题银的概率不大，约等于5铜，6银，7金）</strong></p>
+<h2><span id="aoops-its-yesterday-twice-more签到">A.Oops, It’s Yesterday Twice More（签到）</span></h2><h4><span id="题意">题意</span></h4><p>不知道，队友写的</p>
+<h4><span id="思路">思路</span></h4><p>不知道，队友写的</p>
+<h2><span id="m-windblume-festival签到">M. Windblume Festival（签到）</span></h2><h4><span id="题意">题意</span></h4><p>给一个长度为n整数序列$a[]$ , 每次操作可以选择两个下标 $ i，j$  ($i &lt; j$，环形) , 移除 $a_j$ , 并且令 $a_i = a_i - a_j$ 。</p>
+<p>最后会剩下一个元素，要求最大化这个元素。  ($1&lt;=n&lt;=10^6$)</p>
+<p>input</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">5</span><br><span class="line">4</span><br><span class="line">1 -3 2 -4</span><br><span class="line">11</span><br><span class="line">91 66 73 71 32 83 72 79 84 33 93</span><br><span class="line">12</span><br><span class="line">91 66 73 71 32 83 72 79 84 33 33 93</span><br><span class="line">13</span><br><span class="line">91 66 73 71 32 83 72 79 84 33 33 33 93</span><br><span class="line">1</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
+<p>output</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">10</span><br><span class="line">713</span><br><span class="line">746</span><br><span class="line">779</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
+<p>Note</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">For the first sample test case follow the strategy shown below, where the underlined integers are the integers held by the players selected in each turn.</span><br><span class="line"></span><br><span class="line">&#123;1–,−3,2,−4&#125;(select x=4) →→ &#123;−3,2,−5&#125; (select x=2x) →→ &#123;−3,7&#125; (select x=2) →→ &#123;10&#125;&#125;.</span><br></pre></td></tr></table></figure>
+<h4><span id="思路">思路</span></h4><p>这是一个环形的结构，所以我们可以“自行地”决定一个数的贡献是正的还是负的。并且一定会有一个正的贡献，并且n&gt;1时必定有一个负的贡献。</p>
+<p>所以，答案就是 $ans = max - min + sum(res)$。</p>
+<h2><span id="c-klee-in-solitary-confinement思维前缀和">C. Klee in Solitary Confinement（思维+前缀和）</span></h2><p>（难度：2）</p>
+<h4><span id="题意">题意</span></h4><p>给一个长度为n整数序列$a[]$  , 给一个正整数$k$ 。</p>
+<p>可以选择一段区间$[l,r]$ , 将其中所以元素加$k$  。 </p>
+<p>要求最大化出现次数最多的数的数量。</p>
+<p>$(1≤n≤10^6, −10^6≤k≤10^6 ,−10^6≤a_i≤10^6）$</p>
+<p><strong>Examples</strong></p>
+<p>input</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">5 2</span><br><span class="line">2 2 4 4 4</span><br></pre></td></tr></table></figure>
+<p>output</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">5</span><br></pre></td></tr></table></figure>
+<p>input</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">7 1</span><br><span class="line">3 2 3 2 2 2 3</span><br></pre></td></tr></table></figure>
+<p>output</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">6</span><br></pre></td></tr></table></figure>
+<p>input</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">7 1</span><br><span class="line">2 3 2 3 2 3 3</span><br></pre></td></tr></table></figure>
+<p>output</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">5</span><br></pre></td></tr></table></figure>
+<p>input</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">9 -100</span><br><span class="line">-1 -2 1 2 -1 -2 1 -2 1</span><br></pre></td></tr></table></figure>
+<p>output</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure>
+<h4><span id="思路">思路</span></h4><p>不难发现，对于每个数字 $i$，我们只需要考虑 $i$ 和 $i+k$ 的相对位置关系，可以忽略其他所有的数字。</p>
+<p>所以我们可以遍历一遍数组，用$vector$将每个$i$ 和 $i+k$分在一个组里并保留相对位置。</p>
+<p> 对每个组，令$a_i = 1$ , $a_i+_k = -1$,目标就是最大化区间找出区间和最大的区间$[l,r]$。</p>
+<p>意思就是对于区间$[l,r]$ ， 我们能令最多的$a_i$变成$a_i+_k$ 的同时，令最少的$a_i+_k$被改变。</p>
+<p>实现上，我们维护一个前缀和 sum[i] 和最小前缀和 sum_min[i] 即可。</p>
+<h4><span id="代码">代码</span></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;vector&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define int long long</span><br><span class="line">const int BASE=1e6;</span><br><span class="line">const int MAXN=4e6+20;</span><br><span class="line">int n,k,a,sum[MAXN/4],minn,maxn,summin[MAXN/4],cnt[MAXN],flag,ans,tot;</span><br><span class="line">vector&lt;int&gt; s[MAXN];</span><br><span class="line"></span><br><span class="line">void solve(int num) &#123;</span><br><span class="line">    tot=s[num].size();</span><br><span class="line">    if(tot==0) return;</span><br><span class="line">    ans=max(ans,cnt[num]+s[num][0]);</span><br><span class="line">    sum[1]=s[num][0];</span><br><span class="line">    summin[1]=min(sum[0],sum[1]);</span><br><span class="line">    for(int i=2;i&lt;=tot;++i) &#123;</span><br><span class="line">        sum[i]=sum[i-1]+s[num][i-1];</span><br><span class="line">        summin[i]=min(summin[i-1],sum[i]);</span><br><span class="line">        ans=max(ans,sum[i]-summin[i-1]+cnt[num]);</span><br><span class="line">        //cout&lt;&lt;i&lt;&lt;&quot; &quot;&lt;&lt;sum[i]&lt;&lt;&quot; &quot;&lt;&lt;summin[i-1]&lt;&lt;&#x27;\n&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    for(int i=1;i&lt;=tot;++i) sum[i]=summin[i]=0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">signed main()</span><br><span class="line">&#123;</span><br><span class="line">    scanf(&quot;%lld%lld&quot;,&amp;n,&amp;k);</span><br><span class="line">    flag=1;</span><br><span class="line">    if(k&lt;0) flag=-1,k=-k;</span><br><span class="line">    minn=5e6,maxn=-1;</span><br><span class="line">    for(int i=1;i&lt;=n;++i) &#123;</span><br><span class="line">        scanf(&quot;%lld&quot;,&amp;a);</span><br><span class="line">        a=a*flag+BASE;</span><br><span class="line">        minn=min(minn,a);</span><br><span class="line">        maxn=max(maxn,a);</span><br><span class="line">        ++cnt[a];</span><br><span class="line">        ans=max(ans,cnt[a]);</span><br><span class="line">        s[a].push_back(-1);</span><br><span class="line">        s[a+k].push_back(1);</span><br><span class="line">    &#125;</span><br><span class="line">    if(k!=0)</span><br><span class="line">    &#123;</span><br><span class="line">        for(int i=minn+k;i&lt;=maxn;++i)</span><br><span class="line">            solve(i);</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;ans;</span><br><span class="line">    return 0;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+<h2><span id="h-crystalfly树形dp">H. Crystalfly（树形dp)</span></h2><h4><span id="题意">题意</span></h4><p>给一棵 $n$ 个点带点权的树 ($1≤n≤10^5$ , $1≤a_i≤10^9$)</p>
+<p>从 1 号点出发，每个点的点权可以吃一次，要求最大化吃到的点权和。</p>
+<p>每个点还有另一个值 $t_i$ , 当你走到这个点的相邻节点时，这个点会被” $disturb$ “ ,  $t_i$ 开始倒计时，如果在倒计时结束前还没能吃到这个点，那这个点的点权会消失（注意，可以经过，只是吃不到点权）。 其中 $1&lt;=t_i&lt;=3$。</p>
+<p>输入多组样例，每组样例第一行$n$，第二行点权，第三行$t_i$，然后是树边</p>
+<p>input</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">5</span><br><span class="line">1 10 100 1000 10000</span><br><span class="line">1 2 1 1 1</span><br><span class="line">1 2</span><br><span class="line">1 3</span><br><span class="line">2 4</span><br><span class="line">2 5</span><br><span class="line">5</span><br><span class="line">1 10 100 1000 10000</span><br><span class="line">1 3 1 1 1</span><br><span class="line">1 2</span><br><span class="line">1 3</span><br><span class="line">2 4</span><br><span class="line">2 5</span><br></pre></td></tr></table></figure>
+<p>output</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">10101</span><br><span class="line">10111</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/6622f0e5903744f8ab56acb954784fa1.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220404114835027"></p>
+<h4><span id="思路">思路</span></h4><p> $1&lt;=t_i&lt;=3$是一个很关键的信息。</p>
+<p>$t_i = 1或2$不影响，对于每个父节点我们只能选一个孩子，该吃不到的点还是吃不到。</p>
+<p>$t_i = 3$ 时 , 我们可以考虑先走一个孩子节点，再回到父节点，再走另外一个孩子节点。</p>
+<p><img src="https://img-blog.csdnimg.cn/9e98c32e6d8e44a0a8061594c7254475.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220404115659675"></p>
+<p>如图，当 2号点有 $ t_i = 3$ 时,我们可以先绕到3号点，再走2号。</p>
+<p>这样做，我们可以同时吃到1号的两个孩子2号和3号，</p>
+<p>但要注意，3号的孩子5号和6号（橙色框）必定吃不到点权。</p>
+<p>所以，当我们考虑“绕”这种策略时，要考虑到孙子节点；而不考虑“绕”这种策略时，孙子节点是不需要考虑的，</p>
+<p>这影响到了我们dp方程的设置。</p>
+<p>考虑 $dp[i]$ 代表 i 的子树的最优解，<strong>不包括$i$</strong> 。</p>
+<p>“不包括$i$ ”，那么不考虑“绕”这种策略，我们就可以直接将子节点的dp值直接合并到父节点。</p>
+<p>所以，不考虑“绕”的策略为 ：$dp[i] = \sum_{v=1}^m dp[v] + max(a[v]) $ 。</p>
+<p>考虑“绕”这种策略时，假设要绕的点是$w$ ，$w$的孩子是$ w_s$  。 那么就是 减掉$dp[w]$,  加上 $\sum_{w_s=1}^m dp[w_s]$ ,再加上 $a[w]$ 。 </p>
+<p>即 $dp[i] = max(dp[i] , \sum_{v=1}^m dp[v] + a[v] - dp[w] +\sum_{w_s=1}^m dp[w_s]+a[w]$) . </p>
+<p>（其中，$v$必须保证 $t_v = 3$)</p>
+<p>我们发现这样处理的话每次不仅得遍历儿子还得遍历孙子，因此考虑将孙子的dp值存起来</p>
+<p>令$ sum[u] = \sum_{v=1}^m dp[v]$,</p>
+<p>那么两种策略分别为:</p>
+<ol>
+<li>$ dp[i] = sum[i]+max(a[v])$</li>
+<li>$dp[i] = max(dp[i],sum[i]+a[v] + max(-dp[w]+sum[w]+a[w]))$</li>
+</ol>
+<p>策略2中的走法是：$ i $ 先到$w$ ，$w$ 回到 $i$，$i$ 再到 $v$ 。</p>
+<p>由转移方程可以看出 ,$-dp[w]+sum[w]+a[w]$ 应该取最大的 ， $v$ 必须满足 $t_v = 3$。</p>
+<p>yysy ，这题作为最后一道签到题来讲思路上还是挺绕的，但场上确实过了那么多人……</p>
+<p>如果在不太卷的赛站这大概会是铜牌题？</p>
+<h4><span id="代码">代码</span></h4><p>思路挺绕，但写起来不麻烦</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define rep(i,x,y) for(int i=x;i&lt;=y;i++)</span><br><span class="line">#define int long long</span><br><span class="line">const int N = 1e6+100;</span><br><span class="line">vector&lt;int&gt; edge[N];</span><br><span class="line">int a[N],ti[N];</span><br><span class="line">int n;</span><br><span class="line">int dp[N],sum[N];</span><br><span class="line">void dfs(int u,int f)&#123;</span><br><span class="line">    int max_av = 0;</span><br><span class="line">    for(auto v:edge[u])&#123;</span><br><span class="line">        if(v==f) continue;</span><br><span class="line">        dfs(v,u);</span><br><span class="line">        sum[u] += dp[v];</span><br><span class="line">        max_av = max(max_av,a[v]);</span><br><span class="line">    &#125;</span><br><span class="line">    dp[u] = sum[u] + max_av;</span><br><span class="line">    if(edge[u].size()&lt;=1) return;</span><br><span class="line">    </span><br><span class="line">    // 预处理出-dp[w]+sum[w]+a[w] 最大的两项 , 因为w和v可能重复</span><br><span class="line">    // mx[0] 最大的 -dp[w]+sum[w]+a[w]</span><br><span class="line">    // mx[1] 第二大的 -dp[w]+sum[w]+a[w]</span><br><span class="line">    pair&lt;int,int&gt; mx[2];</span><br><span class="line">    for(auto w:edge[u])&#123;</span><br><span class="line">        if(w==f) continue;</span><br><span class="line">        int now = -dp[w]+sum[w]+a[w];</span><br><span class="line">        if(now&gt;mx[0].first)&#123;</span><br><span class="line">            swap(mx[0],mx[1]);</span><br><span class="line">            mx[0] = make_pair(now,w);</span><br><span class="line">        &#125;</span><br><span class="line">        else if(now&gt;mx[1].first)&#123;</span><br><span class="line">            mx[1] = make_pair(now,w);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    for(auto v:edge[u])&#123;</span><br><span class="line">        if(v==f) continue;</span><br><span class="line">        if(ti[v]==3)&#123;</span><br><span class="line">            if(v!=mx[0].second)</span><br><span class="line">                dp[u]= max(dp[u],sum[u]+a[v]+mx[0].first);</span><br><span class="line">            else</span><br><span class="line">                dp[u] = max(dp[u],sum[u]+a[v]+mx[1].first);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">signed main()&#123;</span><br><span class="line">    ios::sync_with_stdio(false);</span><br><span class="line">    int t;</span><br><span class="line">    cin&gt;&gt;t;</span><br><span class="line">    while(t--)&#123;</span><br><span class="line">        cin&gt;&gt;n;</span><br><span class="line">        rep(i,1,n) cin&gt;&gt;a[i],edge[i].clear();</span><br><span class="line">        rep(i,1,n) cin&gt;&gt;ti[i];</span><br><span class="line">        rep(i,1,n-1)&#123;</span><br><span class="line">            int x,y;</span><br><span class="line">            cin&gt;&gt;x&gt;&gt;y;</span><br><span class="line">            edge[x].push_back(y);</span><br><span class="line">            edge[y].push_back(x);</span><br><span class="line">        &#125;</span><br><span class="line">        rep(i,1,n)&#123;</span><br><span class="line">            dp[i] = sum[i] = 0;</span><br><span class="line">        &#125;</span><br><span class="line">        dfs(1,0);</span><br><span class="line">        cout&lt;&lt;dp[1]+a[1]&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2><span id="dpaimon-sorting思维数据结构">D.Paimon Sorting(思维+数据结构)</span></h2><h4><span id="题意">题意</span></h4><p>派蒙（没错就是派蒙）发明了一种排序方法，如下图：</p>
+<p><img src="https://img-blog.csdnimg.cn/76aa48d1749048049dc603abce564e61.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220404222346528"></p>
+<p>给你一个长度为$n$ 的正整数序列$a[]$ , 问 ：<strong>对于$a[]$ 的每个前缀</strong>，执行上述的排序方法，各需要排序几次? </p>
+<p>($1&lt;=n&lt;=10^5,1&lt;=a_i&lt;=n$ , 多组样例保证 $n$ 不大于 $10^6$)</p>
+<p><img src="https://img-blog.csdnimg.cn/698cadf41365494083923c9d64a52cfe.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220404222602040"></p>
+<h4><span id="思路">思路</span></h4><p>首先派蒙的排序方法很简单，可以抄下来写对拍找规律。</p>
+<p>不难发现，<strong>第 $i$ 次迭代的时候，我们会将序列里最大的元素移动到第 $i$ 位</strong>（废话，但很关键）</p>
+<p>那么，既然题目要求依次输出每个前缀的答案</p>
+<p>我们不如就将这些元素一个一个插入到序列中，看看 $ans_i$ 与 $ans_{i+1}$有没有关系。</p>
+<p>设 maxx 为前 $i-1$ 个元素里的最大值,当我们求第 $i$ 个前缀时：</p>
+<p>(1) 若 $a_i &lt; maxx$ :</p>
+<p>“第 $i$ 次迭代的时候，我们会将序列里最大的元素移动到第 $i$ 位” , 那么，前i-1次迭代时，$a_i$ 一定不会被移动（对着派蒙的代码看一下就知道了）。第$i$ 次迭代时，显然，交换次数 = 有多少个比$a_i$大的数(去重)。</p>
+<p>因此 ， $ans_i = ans_{i-1}$ + 比$a_i$大的数的个数（去重）。</p>
+<p>这个可以拿权值线段树维护一下</p>
+<p>(2)若 $a_i = maxx$:</p>
+<p>因为相等不交换，因此有 $ans_i = ans_{i-1}$ </p>
+<p>(3)若 $a_i &gt; maxx$:</p>
+<p>$ans_i$ = $ans_{i-1}$ + 最大的数第二次出现后一共有几个数（暂时不知道怎么证明, 过两天抓个人讨论下）。</p>
+<p>这个有点难弄，但这道题有个很好的地方在于可以打表帮助推导。</p>
+<p>cjb : </p>
+<p><img src="https://img-blog.csdnimg.cn/eecf20e117594c32b637f4833133649f.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220404222602040"></p>
+<p>所以还是那个很关键的地方———-“第 $i$ 次迭代的时候，我们会将序列里最大的元素移动到第 $i$ 位” ，然后打表就完事儿了.jpg。</p>
+<p>这个可以维护两个$cnt$， 也可以$lowerbound()$一下。</p>
+<h4><span id="代码">代码</span></h4><p>（记得开long long, 记得开long long, 记得开long long, 记得开long long, 记得开long long)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define int long long</span><br><span class="line">const int N = 2e6+100;</span><br><span class="line">int tr[N];</span><br><span class="line">void insert(int now,int l,int r,int loc,int val)&#123;</span><br><span class="line">    if(l==r)&#123;</span><br><span class="line">        tr[now] += val;</span><br><span class="line">        tr[now] = min(1ll,tr[now]);</span><br><span class="line">        tr[now] = max(tr[now],0ll);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    int mid = (l+r)&gt;&gt;1;</span><br><span class="line">    if(loc&lt;=mid)</span><br><span class="line">        insert(now&lt;&lt;1,l,mid,loc,val);</span><br><span class="line">    else</span><br><span class="line">        insert(now&lt;&lt;1|1,mid+1,r,loc,val);</span><br><span class="line">    tr[now] = tr[now&lt;&lt;1]+tr[now&lt;&lt;1|1];</span><br><span class="line">&#125;</span><br><span class="line">int query(int now,int l,int r,int ql,int qr)&#123;</span><br><span class="line">    if(l&gt;=ql&amp;&amp;r&lt;=qr)&#123;</span><br><span class="line">        return tr[now];</span><br><span class="line">    &#125;</span><br><span class="line">    int sum = 0;</span><br><span class="line">    int mid = (l+r)&gt;&gt;1;</span><br><span class="line">    if(ql&lt;=mid)</span><br><span class="line">        sum += query(now&lt;&lt;1,l,mid,ql,qr);</span><br><span class="line">    if(qr&gt;=mid+1)</span><br><span class="line">        sum += query(now&lt;&lt;1|1,mid+1,r,ql,qr);</span><br><span class="line">    return sum;</span><br><span class="line">&#125;</span><br><span class="line">int a[N];</span><br><span class="line">vector&lt;int&gt; ans;</span><br><span class="line">signed main()&#123;</span><br><span class="line">    ios::sync_with_stdio(false);</span><br><span class="line">    int t;</span><br><span class="line">    cin&gt;&gt;t;</span><br><span class="line">    while(t--)&#123;</span><br><span class="line">        int n;</span><br><span class="line">        cin&gt;&gt;n;</span><br><span class="line">        int maxx = -1;</span><br><span class="line">        int last = 0;</span><br><span class="line">        int tmp = 0,cnt = 0;</span><br><span class="line">        for(int i=1;i&lt;=n;i++)&#123;</span><br><span class="line">            cin&gt;&gt;a[i];</span><br><span class="line">            if(i==1)&#123;</span><br><span class="line">                ans.push_back(last);</span><br><span class="line">                maxx = a[i],cnt = 1;</span><br><span class="line">            &#125;</span><br><span class="line">            else&#123;</span><br><span class="line">                if(a[i]==maxx)&#123;</span><br><span class="line">                    ans.push_back(last);</span><br><span class="line">                    cnt++;</span><br><span class="line">                    if(cnt&gt;=2) tmp++;</span><br><span class="line">                &#125;</span><br><span class="line">                else if(a[i]&lt;maxx)&#123;</span><br><span class="line">                    last = last+ query(1,1,n,a[i]+1,n);</span><br><span class="line">                    ans.push_back(last);</span><br><span class="line">                    if(cnt&gt;=2) tmp++;</span><br><span class="line">                &#125;</span><br><span class="line">                else&#123;</span><br><span class="line">                    last = last+2+tmp;</span><br><span class="line">                    ans.push_back(last);</span><br><span class="line">                    maxx = a[i];</span><br><span class="line">                    tmp = 0;</span><br><span class="line">                    cnt = 1;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            insert(1,1,n,a[i],1);</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i=1;i&lt;=n;i++)&#123;</span><br><span class="line">            insert(1,1,n,a[i],-1);</span><br><span class="line">            cout&lt;&lt;ans[i-1]&lt;&lt;&quot; \n&quot;[i==n];</span><br><span class="line">        &#125;</span><br><span class="line">        ans.clear();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2><span id="j-xingqius-joke数学数论">J. Xingqiu’s Joke（数学，数论）</span></h2><h4><span id="题意">题意</span></h4><p>多次询问 ($1&lt;=t&lt;=10^4$)</p>
+<p>给你两个正整数 $a$, $b$  ($1&lt;=a,b&lt;=10^9$) , 每次操作可以选择以下三个操作中的一种：</p>
+<ol>
+<li><p>$a$  $b$ 同时加一</p>
+</li>
+<li><p>$a$  $b$ 同时减一</p>
+</li>
+<li><p>$a$ $b$ 同时除以他们的一个<strong>质公因数</strong></p>
+<p>要求用最少的操作数，让 $a$, $b$中的一个变成 $1$。</p>
+</li>
+</ol>
+<h4><span id="思路">思路</span></h4><p>发现了一个特别重要的东西 ， </p>
+<p>$a$  $b$ 同时加一 ， $a$  $b$ 同时减一 ， 差值不变。</p>
+<p>$a$ $b$ 同时除以他们的一个<strong>质公因数</strong> ， 差值变为原来的“该质公因数”分之一。</p>
+<p>所以，我们假设最终的状态是 $\xi = (1,x)$ , 令 $d = |b-a| - |x-1|$</p>
+<p>将$d$质因数分解 ， 得 $d = p_1^{k_1} + p_2^{k_2} + … + p_n^{k_n}$  </p>
+<p>那么， $(a,b)$必然是通过除以 $k_1$ 次 $p_1$,   $k_2$ 次 $p_2$,   $k_n $ 次 $p_n$ 得到  $\xi$ 的。</p>
+<p>然后简单了，一个$10^9$以内的数，它的质因数总个数不会超过 $30$ 个 (废话*2) , 所以我们可以考虑暴力地状态转移。</p>
+<p>$f(a,b)$表示$a,b$达到终态所需的最小步数 ， 那么$f(a,b)$可以转移到 $f(a/k,b/k) ,f(a+1,b+1) , f(a-1,b-1)$</p>
+<p>有点麻烦，改一下，设 $f(a,d)$ 表示$a, d = |a-b|$达到终态所需的最小步数 , $f(a,d)$ 可以从 $f(\lfloor\frac ap\rfloor,\frac dp)$  ，$f(\lceil\frac ap\rceil,\frac dp)$ 转移。</p>
+<h4><span id="代码">代码</span></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define int long long</span><br><span class="line">const int N = 1e6+100;</span><br><span class="line">vector&lt;int&gt; prime;</span><br><span class="line">vector&lt;int&gt; p;</span><br><span class="line">map&lt;pair&lt;int,int&gt;,int&gt; mp;</span><br><span class="line">bool vis[N];</span><br><span class="line">void pre()&#123;</span><br><span class="line">    vis[1] = 1;</span><br><span class="line">    for(int i=2;i&lt;=500000;i++)&#123;</span><br><span class="line">        if(!vis[i])&#123;</span><br><span class="line">            prime.push_back(i);</span><br><span class="line">            for(int j=i*2;j&lt;=500000;j+=i)</span><br><span class="line">                vis[j] = true;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">void get(int d)&#123;</span><br><span class="line">    for(int i=0;i&lt;prime.size();i++)&#123;</span><br><span class="line">        int now = prime[i];</span><br><span class="line">        if(now&gt;d) break;</span><br><span class="line">        if(d%now==0)&#123;</span><br><span class="line">            p.push_back(now);</span><br><span class="line">            while(d%now==0) d/=now;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if(d&gt;1) p.push_back(d);</span><br><span class="line">&#125;</span><br><span class="line">int solve(int a,int d)&#123;</span><br><span class="line">    pair&lt;int,int&gt; pp = make_pair(a,d);</span><br><span class="line">    if(a==1) return 0;</span><br><span class="line">    else if(mp[pp]) return mp[pp];</span><br><span class="line">    int res = a-1;</span><br><span class="line">    for(auto v:p)&#123;</span><br><span class="line">        if(d%v==0)&#123;</span><br><span class="line">            int x = solve(a/v, d/v)+a%v; // 减完除</span><br><span class="line">            int y = solve(a/v+1,d/v)+v-a%v; // 加完除</span><br><span class="line">            res = min(&#123;res,1+x,1+y&#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    mp[pp] = res;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br><span class="line">signed main()&#123;</span><br><span class="line">    ios::sync_with_stdio(false);</span><br><span class="line">    pre();</span><br><span class="line">    int t;</span><br><span class="line">    cin&gt;&gt;t;</span><br><span class="line">    while(t--)&#123;</span><br><span class="line">        int a,b;</span><br><span class="line">        cin&gt;&gt;a&gt;&gt;b;</span><br><span class="line">        mp.clear(),p.clear();</span><br><span class="line">        if(a&gt;b) swap(a,b);</span><br><span class="line">        if(a==1)&#123;</span><br><span class="line">            cout&lt;&lt;0&lt;&lt;endl;</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line">        else if(b-a==1)&#123;</span><br><span class="line">            cout&lt;&lt;a-1&lt;&lt;endl;</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line">        else if(a==b)&#123;</span><br><span class="line">            cout&lt;&lt;1&lt;&lt;endl;</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line">        get(b-a);</span><br><span class="line">        cout&lt;&lt;solve(a,b-a)&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2><span id="i-cloud-retainers-game">I. Cloud Retainer’s Game</span></h2><p>明天写</p>
+<h4><span id="题意">题意</span></h4><h4><span id="思路">思路</span></h4><h4><span id="代码">代码</span></h4>
+    </div>
+
+    
+        <hr class="fhr">
+        <div id="vcomments"></div>
+    
+</div>
+    <div class="footer" id="footer">
+    <p><h4>Copyright © 2020 | Author: xi-qaq | Theme By <a class="theme-author" target="_blank" rel="noopener" href="https://github.com/Xunzhuo/hexo-theme-coder" style="font-size:14px; color: #969696">Coder</a></h4>
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span id="busuanzi_container_site_pv">Page Views: <span id="busuanzi_value_site_pv"></span></span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv">Unique Visitors: <span id="busuanzi_value_site_uv"></span></span>
+    
+    <label class="el-switch el-switch-blue el-switch-sm" style="vertical-align: sub;">
+        <input type="checkbox" name="switch" id="update_style">
+        <span class="el-switch-style"></span>
+    </label>
+
+    <!--         <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");
+    document.write(unescape("%3Cspan id='cnzz_stat_icon_1278548644'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/stat.php%3Fid%3D1278548644%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script> -->
+</p>
+</div>
+
+<input type="hidden" id="web_style" value="black">
+<input type="hidden" id="valine_appid" value="fUmEj4sdugz7FPPWwgk6X8LI-gzGzoHsz">
+<input type="hidden" id="valine_appKey" value="zxW4dvYBD1ejUEHTvG0fMpGc">
+
+<script src="/libs/jquery.min.js"></script>
+
+
+<script src="/libs/highlight/highlight.pack.js"></script>
+
+<script src='//cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+
+<script src="/js/js.js"></script>
+
+<style type="text/css">
+.v * {
+color: #698fca;
+}
+.v .vlist .vcard .vhead .vsys {
+color: #3a3e4a;
+}
+.v .vlist .vcard .vh .vmeta .vat {
+color: #638fd5;
+}
+.v .vlist .vcard .vhead .vnick {
+color: #6ba1ff;
+}
+.v a {
+color: #8696b1;
+}
+.v .vlist .vcard .vhead .vnick:hover {
+color: #669bfc;
+}
+</style>
+    <script type="text/javascript" color="173,174,173" opacity='1' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>
