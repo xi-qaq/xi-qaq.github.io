@@ -215,10 +215,10 @@
 <p><img src="https://img-blog.csdnimg.cn/a49eba3e56b5486ebb565dccba9be03d.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220405141811171"></p>
 <p>那么， 当我们碰到障碍时，其实是改变了小球相对于 2*H 的偏移量：</p>
 <p><img src="https://img-blog.csdnimg.cn/6ac324fdc55f477195f7aa3d7902b879.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGlfNzk5Nw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="image-20220405142348553"></p>
-<p>如图， 当我们撞到一个位于 $(4,4)$ 的障碍时 ， 偏移量会比原来$ -4$</p>
+<p>如图， 当我们撞到一个位于 $(4,4)$ 的障碍时 ， 偏移量会比原来$-4$</p>
 <p>所以，我们可以找到这样一个偏移量 k：</p>
 <p>向右下移动时 ：$k = (x+y) \mod 2*H$</p>
-<p>向右上移动时：$k = （2<em>H + x - y) \mod 2</em>H $ </p>
+<p>向右上移动时：$k = （2<em>H + x - y) \mod 2</em>H$ </p>
 <p>然后我们从最右上的点依次转移到最左下的点就好了， 显然答案就是偏移量 $k = 0$时的解。</p>
 <h4><span id="代码">代码</span></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define int long long</span><br><span class="line">map&lt;int,int&gt; dp;</span><br><span class="line">struct Tuple&#123;</span><br><span class="line">    int x;</span><br><span class="line">    int y;</span><br><span class="line">    bool val;</span><br><span class="line">    bool operator&lt;(Tuple B) const&#123;</span><br><span class="line">        if(x!=B.x) return x&gt;B.x;</span><br><span class="line">        else return y&gt;B.y;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">vector&lt;Tuple&gt; v;</span><br><span class="line">int n,m;</span><br><span class="line">int H;</span><br><span class="line">signed main()&#123;</span><br><span class="line">    ios::sync_with_stdio(false);</span><br><span class="line">    int t;</span><br><span class="line">    cin&gt;&gt;t;</span><br><span class="line">    while(t--)&#123;</span><br><span class="line">        cin&gt;&gt;H;</span><br><span class="line">        cin&gt;&gt;n;</span><br><span class="line">        for(int i=1;i&lt;=n;i++)&#123;</span><br><span class="line">            int x,y;</span><br><span class="line">            cin&gt;&gt;x&gt;&gt;y;</span><br><span class="line">            v.push_back(&#123;x,y, false&#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        cin&gt;&gt;m;</span><br><span class="line">        for(int i=1;i&lt;=m;i++)&#123;</span><br><span class="line">            int x,y;</span><br><span class="line">            cin&gt;&gt;x&gt;&gt;y;</span><br><span class="line">            v.push_back(&#123;x,y,true&#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        sort(v.begin(),v.end());</span><br><span class="line">        for(auto now:v)&#123;</span><br><span class="line">            int x = now.x,y = now.y;bool val = now.val;</span><br><span class="line">            if(val)&#123;</span><br><span class="line">                dp[(x+y)%(2*H)] += 1;</span><br><span class="line">                dp[(2*H+x-y)%(2*H)] +=1;</span><br><span class="line">            &#125;</span><br><span class="line">            else&#123;</span><br><span class="line">                dp[(x+y)%(2*H)] = max(dp[(x+y)%(2*H)],dp[(2*H+x-y)%(2*H)]);</span><br><span class="line">                dp[(2*H+x-y)%(2*H)] = max(dp[(x+y)%(2*H)],dp[(2*H+x-y)%(2*H)]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        cout&lt;&lt;dp[0]&lt;&lt;endl;</span><br><span class="line">        dp.clear();</span><br><span class="line">        v.clear();</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -283,21 +283,5 @@ color: #669bfc;
 }
 </style>
     <script type="text/javascript" color="173,174,173" opacity='1' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
 </body>
 </html>
