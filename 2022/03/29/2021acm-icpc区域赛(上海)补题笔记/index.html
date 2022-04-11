@@ -87,8 +87,7 @@
 <p>然后第$i$个物品只会从第 $i-1$ 个物品转移，所以第一维的N可以用滚动数组滚掉，变成 $dp[2][V][K]$.</p>
 <p>我们将每个物品拆分成四个：</p>
 <p> $aa = (v_i , t_i)$ ,$bb = (v_i ,- t_i) $</p>
-<p>$ cc = (v_i , 2<em>t_i) , $$ dd = (v_i , -2</em>t_i)$</p>
-<p>那么：</p>
+<script type="math/tex; mode=display">cc = (v_i , 2*t_i) $$, $$ dd = (v_i , -2*t_i)</script><p>那么：</p>
 <p>$dp[i][V][K] = max(dp[i][V][K],dp[i\oplus1][V-aa][j]+v[i])$</p>
 <p>$dp[i][V][K] = max(dp[i][V][K],dp[i\oplus1][V-bb][j]+v[i])$</p>
 <p>$dp[i][V][K] = max(dp[i][V][K],dp[i\oplus1][V-cc][j-1]+v[i])$ $, K&gt;0$</p>
@@ -158,7 +157,7 @@
 <h4><span id="思路">思路</span></h4><p>类似于在完全图中找一条经过$n$ 个点的哈密顿路 ，其中有$n$ 条边禁选。</p>
 <p>首先是一个经典容斥问题：</p>
 <p>$ans_i$表示<strong>选择了 $i$ 条禁选边的方案数</strong></p>
-<p>那么 ，答案就是 $sum = \sum_{i=0}^n (-1)^i<em>ans_i</em>(n-i)!$</p>
+<p>那么 ，答案就是 <script type="math/tex">sum = \sum_{i=0}^n (-1)^i*ans_i*(n-i)!</script></p>
 <p>现在问题变成了如何求 $ans_i$</p>
 <p>显然我们选边不能乱选，因为可能会成环。</p>
 <p>可以知道，所有的禁选边会组成 若干个环,我们可以在每个环中取最多 “环的边数-1” 条边。</p>
